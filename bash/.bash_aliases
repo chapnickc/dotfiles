@@ -10,7 +10,7 @@
 # -------------------------------------
 alias ls='ls -G'
 alias l='ls'
-alias ll="ls -A"       # List including dotfiles
+alias la="ls -A"       # List including dotfiles
 alias ld="ls -d */"   # List only directories
 
 # -------------------------------------
@@ -22,11 +22,11 @@ alias ....="cd ../../.."
 
 alias v="vim"
 alias vi="vim"
-alias c='clear'
-alias md='mkdir'
 
-# making the python 3.5 the default interpreter.
-#alias python=python3.5
+alias c='clear'
+
+# making the python 3 the default interpreter.
+alias python=python3
 
 alias ipy=ipython        # quicker access to ipython
 alias deac='deactivate'  # for virtual environments
