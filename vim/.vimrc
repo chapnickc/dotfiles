@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required for vundle
 filetype off                  " required
 
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/
 set rtp+=~/dotfiles/vim/bundle/Vundle.vim
@@ -17,24 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
-"" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -43,8 +24,6 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-
-" Put your non-Plugin stuff after this line
 " ------------------------------------------------------------------------------------------
 
 
@@ -52,14 +31,15 @@ filetype plugin indent on    " required
 "set term=screen-256color        " define terminal. should be the same
                                 " as that defined in .tmux.conf. Note:
                                 " had to use screen rather than xterm
-let &t_Co=256
+
 
 "     Key Mapping
-"let mapleader="\"                  " change the mapleader from \ to ,
-nmap <leader>l :bnext<CR>          " Move to the next buffer
-nmap <leader>h :bprevious<CR>      " Move to the previous buffer
+let mapleader="\<Space>"                  " change the mapleader from '\' to space
+nmap <leader>l :bnext<CR>                 " Move to the next buffer
+nmap <leader>h :bprevious<CR>             " Move to the previous buffer
 
 "      General
+let &t_Co=256                      " Enable 256 colors
 set number                         " Show line numbers
 set backspace=indent,eol,start     " Allow backspace in insert mode
 set laststatus=2                   " Always show the status bar
@@ -73,11 +53,17 @@ set ruler                          " Cursor position
 set autowrite                      " Automatically save file
 set showmatch                      " Show matching brackets
 set encoding=utf-8                 " File encoding
+set termencoding=utf-8
 set fileencoding=utf-8
+set term=xterm-256color
 
 
-"       Indentation
-"   More info at http://www.vex.net/~x/python_and_vim.html
+
+
+" --------------------------------------------------------
+"                    Indentation
+" - More info at http://www.vex.net/~x/python_and_vim.html
+" --------------------------------------------------------
 set modeline
 set smartindent
 set autoindent
@@ -87,34 +73,36 @@ set tabstop=4                       "set tab to indent 4 spaces
 set shiftwidth=4                    "indent width for autoindent
 
 
-
-"       Slimux
+" --------------------------------------------
+"                    Slimux
+" --------------------------------------------
 "map <C-c><C-c> :SlimuxREPLSendLine<CR>
 "vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 
-"       Theme
-" File type settings
+" --------------------------------------------
+"                  Theme
+" --------------------------------------------
 syntax enable 
 set background=dark
-"colorscheme Tomorrow-Night-Eighties 
 "colorscheme brogrammer
-"let python_highlight_all=1 " enable all Python syntax highlighting features
-"
+let python_highlight_all=1 " enable all Python syntax highlighting features
 
-"       Powerline
-set noshowmode                                 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-let g:Powerline_symbols = 'fancy'
-set term=xterm-256color
-set termencoding=utf-8
 
-let g:airline_powerline_fonts = 1              " Allows for special symbols
-let g:airline_section_z = '%'                  " Make the right side empty
-let g:airline_theme = 'bubblegum'
-let g:airline#extensions#tabline#enabled = 1     " Enable the list of buffers
+" --------------------------------------------
+"            Vim-Airline (Powerline)
+" --------------------------------------------
+set noshowmode                                     " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+let g:airline_powerline_fonts = 1                  " Allows for special symbols
+let g:airline_section_z = '%'                      " Make the right side empty
+let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
+let g:airline_theme = 'bubblegum'
 
-""      YouCompleteMe
+" --------------------------------------------
+"               YouCompleteMe
+" --------------------------------------------
 "set completeopt-=preview                       " remove documentation preview
 "set pumheight=20                               " Limit popup menu height
 "let g:ycm_echo_current_diagnostic = 0
@@ -125,7 +113,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
 "let g:vimtex_enable = 1
 "let g:tex_flavor = 'latex'
 
-
 " non-recursively map '\+[' to go to documentation
 "nnoremap <Leader>[ :YcmCompleter GetDoc<CR>
 
@@ -133,5 +120,4 @@ let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
 "nnoremap <Leader>] :pclose<CR>
 
 
-" ------------------------------------------------------------------------------------------
 
