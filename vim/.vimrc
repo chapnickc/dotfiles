@@ -8,15 +8,24 @@ set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 " --------------------------------------------
 "                 Vundle
 " --------------------------------------------
+
+"--------------------------
+"       Begin Vundle
+"--------------------------
 call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'             " required
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
-call vundle#end()            " required
+call vundle#end()                         " required
+"--------------------------
+"        End Vundle
+"--------------------------
+
 filetype plugin indent on    " required
 
 " Brief help
@@ -37,6 +46,9 @@ filetype plugin indent on    " required
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
 nmap <leader>l :bnext<CR>                 " Move to the next buffer
 nmap <leader>h :bprevious<CR>             " Move to the previous buffer
+map <F7> mzgg=G`z                         " Reindent the entire file
+
+
 
 "      General
 let &t_Co=256                      " Enable 256 colors
@@ -84,9 +96,28 @@ set shiftwidth=4                    "indent width for autoindent
 "                  Theme
 " --------------------------------------------
 syntax enable 
+
 set background=dark
-"colorscheme brogrammer
-let python_highlight_all=1 " enable all Python syntax highlighting features
+colorscheme sift
+
+highlight LineNr       ctermbg=234 ctermfg=236  
+
+"highlight clear SignColumn
+"highlight VertSplit    ctermbg=236
+"highlight ColorColumn  ctermbg=237
+
+"highlight CursorLineNr ctermbg=236 ctermfg=240
+"highlight CursorLine   ctermbg=236
+"highlight StatusLineNC ctermbg=238 ctermfg=0
+"highlight StatusLine   ctermbg=240 ctermfg=12
+"highlight IncSearch    ctermbg=3   ctermfg=1
+"highlight Search       ctermbg=1   ctermfg=3
+"highlight Visual       ctermbg=3   ctermfg=0
+"highlight Pmenu        ctermbg=240 ctermfg=12
+"highlight PmenuSel     ctermbg=3   ctermfg=1
+"highlight SpellBad     ctermbg=0   ctermfg=1
+
+
 
 
 " --------------------------------------------
@@ -98,7 +129,13 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'murmur'
+
+" --------------------------------------------
+"               Vim Markdown
+" --------------------------------------------
+let g:vim_markdown_math = 1                        " Enable LaTeX math
+
 
 " --------------------------------------------
 "               YouCompleteMe
@@ -121,3 +158,4 @@ let g:airline_theme = 'bubblegum'
 
 
 
+"let python_highlight_all=1 " enable all Python syntax highlighting features

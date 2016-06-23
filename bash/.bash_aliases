@@ -11,6 +11,7 @@
 alias ls='ls -G'
 alias l='ls'
 alias la="ls -A"       # List including dotfiles
+alias ll="ls -lA"
 alias ld="ls -d */"   # List only directories
 
 # -------------------------------------
@@ -35,3 +36,19 @@ alias ':q'='exit'
 #alias untar.xz="tar xpvf"
 #alias smalltree='tree -L 2'
 #Directory for jupyter $(jupyter --data-dir)
+
+# Store the current Work Dir
+alias wd='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device/Code/LifeBud_v2.0/'
+
+alias reset='source ~/.profile'
+
+# ------------------------------------------------
+#                GitHub
+# ------------------------------------------------
+
+# Quick git push 
+alias qgpush='git add --all && git commit -m "-" && git push'
+
+
+
+

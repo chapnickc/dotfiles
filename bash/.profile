@@ -6,6 +6,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -36,18 +40,8 @@ export PYTHONIOENCODING='UTF-8'
 #export AVR_TOOLS_DIR="/opt/arduino-1.6.9/hardware/tools/avr"
 
 
-
-# Make Tab autocomplete regardless of filename case
-set completion-ignore-case on
 # use any key to get things flowing again
-#stty ixany
-
-
-
-
-# Set colors to match iTerm2 Terminal Colors
-export TERM=xterm-256color
-
+stty ixany
 
 
 # simplified color names for easy access
@@ -63,7 +57,7 @@ txtrst='\e[0m'    # Text Reset
 royal_blue='\e[38;5;69m'
 
 # Setup the normal PS1 here
-PS1="\[$bldgrn\][\[$txtrst\] \[$bldpur\]\u: \[$royal_blue\]\w \[$txtrst\] \[$bldgrn\]]\[$txtrst\] \[$bldylw\]\$ \[$txtrst\] "
+PS1="\[$bldgrn\][\[$txtrst\] \[$bldpur\]\u: \[$royal_blue\]\W \[$txtrst\]\[$bldgrn\]]\[$txtrst\] \[$bldylw\]➯ \[$txtrst\] "
 
 
 LS_COLORS="di=1;96:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90"
