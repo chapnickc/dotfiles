@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jpalardy/vim-slime'
+Plugin 'hdima/python-syntax'
 "Plugin 'epeli/slimux' 
 call vundle#end()                         
 "--------------------------
@@ -90,10 +91,11 @@ set shiftwidth=4                    "indent width for autoindent
 syntax enable 
 
 set background=dark
-colorscheme sift
+colorscheme zeno
 
-highlight LineNr       ctermbg=234 ctermfg=236  
+highlight LineNr       ctermbg=234  ctermfg=236  
 
+"highlight IncSearch    ctermbg=227   ctermfg=15
 "highlight clear SignColumn
 "highlight VertSplit    ctermbg=236
 "highlight ColorColumn  ctermbg=237
@@ -102,8 +104,8 @@ highlight LineNr       ctermbg=234 ctermfg=236
 "highlight CursorLine   ctermbg=236
 "highlight StatusLineNC ctermbg=238 ctermfg=0
 "highlight StatusLine   ctermbg=240 ctermfg=12
-"highlight IncSearch    ctermbg=3   ctermfg=1
-"highlight Search       ctermbg=1   ctermfg=3
+
+"highlight Search       ctermbg=227  ctermfg=15
 "highlight Visual       ctermbg=3   ctermfg=0
 "highlight Pmenu        ctermbg=240 ctermfg=12
 "highlight PmenuSel     ctermbg=3   ctermfg=1
@@ -122,12 +124,7 @@ let g:slime_dont_ask_default = 1
 
 xmap <leader><tab> <Plug>SlimeRegionSend
 nmap <leader><tab> <Plug>SlimeParagraphSend
-nmap <c-c><c-c>     <Plug>SlimeConfig
-
-"map <leader><tab> :SlimuxREPLSendLine<CR>
-"vmap <leader><tab> :SlimuxREPLSendSelection<CR>
-"nmap <leader>N :SlimuxREPLConfigure<CR>
-
+nmap <leader>N     <Plug>SlimeConfig
 
 
 " --------------------------------------------
@@ -147,7 +144,10 @@ let g:airline_theme = 'murmur'
 let g:vim_markdown_math = 1                        " Enable LaTeX math
 let g:vim_markdown_folding_disabled = 1
 
-
+" --------------------------------------------
+"               Python Syntax
+" --------------------------------------------
+let python_highlight_all = 1 " enable all Python syntax highlighting features
 
 " --------------------------------------------
 "                    Slimux
@@ -180,4 +180,4 @@ let g:vim_markdown_folding_disabled = 1
 "nnoremap <Leader>] :pclose<CR>
 
 
-"let python_highlight_all=1 " enable all Python syntax highlighting features
+
