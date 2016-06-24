@@ -63,4 +63,7 @@ PS1="\[$bldgrn\][\[$txtrst\] \[$bldpur\]\u: \[$royal_blue\]\W \[$txtrst\]\[$bldg
 LS_COLORS="di=1;96:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90"
 export LS_COLORS
 
+export EVENT_NOEPOLL=1
 
+
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

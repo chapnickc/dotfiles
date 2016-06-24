@@ -13,15 +13,14 @@ set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 "       Begin Vundle
 "--------------------------
 call vundle#begin()
-"call vundle#begin('~/some/path/here')
-
 Plugin 'VundleVim/Vundle.vim'             " required
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
-call vundle#end()                         " required
+Plugin 'jpalardy/vim-slime'
+"Plugin 'epeli/slimux' 
+call vundle#end()                         
 "--------------------------
 "        End Vundle
 "--------------------------
@@ -37,13 +36,14 @@ filetype plugin indent on    " required
 
 
 "          Initialize
-"set term=screen-256color        " define terminal. should be the same
+set term=screen-256color       " define terminal. should be the same
                                 " as that defined in .tmux.conf. Note:
                                 " had to use screen rather than xterm
 
 
 "     Key Mapping
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
+nnoremap <leader>w :w<CR>                 " Type <Space>w to save file
 nmap <leader>l :bnext<CR>                 " Move to the next buffer
 nmap <leader>h :bprevious<CR>             " Move to the previous buffer
 map <F7> mzgg=G`z                         " Reindent the entire file
@@ -67,7 +67,6 @@ set showmatch                      " Show matching brackets
 set encoding=utf-8                 " File encoding
 set termencoding=utf-8
 set fileencoding=utf-8
-set term=xterm-256color
 
 
 
@@ -83,13 +82,6 @@ set expandtab                       " turn tabs into spaces
 set softtabstop=4                   " allow vim to see 4 spaces as a tab
 set tabstop=4                       "set tab to indent 4 spaces
 set shiftwidth=4                    "indent width for autoindent
-
-
-" --------------------------------------------
-"                    Slimux
-" --------------------------------------------
-"map <C-c><C-c> :SlimuxREPLSendLine<CR>
-"vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 
 " --------------------------------------------
@@ -119,6 +111,24 @@ highlight LineNr       ctermbg=234 ctermfg=236
 
 
 
+" --------------------------------------------
+"                  Vim-Slime
+" --------------------------------------------
+let g:slime_target = "tmux"
+let g:slime_paste_file = "~/.slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+
+let g:slime_dont_ask_default = 1
+
+xmap <leader><tab> <Plug>SlimeRegionSend
+nmap <leader><tab> <Plug>SlimeParagraphSend
+nmap <c-c><c-c>     <Plug>SlimeConfig
+
+"map <leader><tab> :SlimuxREPLSendLine<CR>
+"vmap <leader><tab> :SlimuxREPLSendSelection<CR>
+"nmap <leader>N :SlimuxREPLConfigure<CR>
+
+
 
 " --------------------------------------------
 "            Vim-Airline (Powerline)
@@ -135,6 +145,19 @@ let g:airline_theme = 'murmur'
 "               Vim Markdown
 " --------------------------------------------
 let g:vim_markdown_math = 1                        " Enable LaTeX math
+let g:vim_markdown_folding_disabled = 1
+
+
+
+" --------------------------------------------
+"                    Slimux
+" --------------------------------------------
+"map <leader><tab> :SlimuxREPLSendLine<CR>
+"vmap <leader><tab> :SlimuxREPLSendSelection<CR>
+"nmap <leader>N :SlimuxREPLConfigure<CR>
+
+"let g:slimux_select_from_current_window = 0
+"let g:slimux_exclude_vim_pane = 0
 
 
 " --------------------------------------------
@@ -155,7 +178,6 @@ let g:vim_markdown_math = 1                        " Enable LaTeX math
 
 " non-recursively map '\+]' to close preview windows 
 "nnoremap <Leader>] :pclose<CR>
-
 
 
 "let python_highlight_all=1 " enable all Python syntax highlighting features

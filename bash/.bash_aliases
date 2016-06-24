@@ -47,8 +47,14 @@ alias reset='source ~/.profile'
 # ------------------------------------------------
 
 # Quick git push 
-alias qgpush='git add --all && git commit -m "-" && git push'
+alias qpush='git add --all && git commit -m "-" && git push'
 
 
-
-
+# TMUX
+alias mux='tmux'
+alias lmux='tmux ls'
+alias lpmux='tmux list-panes -a'
+alias newmux='tmux new-session -n Newmux'
+#alias muxv= 'tmux split-window -h'
+alias kmux='tmux kill-pane -t '
+alias smux='tmux send-keys -t '
