@@ -20,6 +20,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jpalardy/vim-slime'
 Plugin 'hdima/python-syntax'
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'epeli/slimux' 
 call vundle#end()                         
 "--------------------------

@@ -137,7 +137,7 @@ hi StatusLine     term=bold,reverse cterm=bold ctermfg=17 ctermbg=38
 hi StatusLineNC   term=reverse cterm=bold ctermfg=23 ctermbg=31 
 hi VertSplit      term=reverse ctermfg=244 ctermbg=60 
 hi Title          term=bold ctermfg=46 
-hi Visual         term=reverse ctermfg=68 ctermbg=35
+hi Visual         term=reverse ctermfg=27 ctermbg=240
 hi VisualNOS      term=bold,underline cterm=bold,underline 
 hi WarningMsg     term=standout ctermfg=209 
 hi WildMenu       term=standout ctermfg=16 ctermbg=226 

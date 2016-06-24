@@ -38,8 +38,8 @@ alias ':q'='exit'
 #Directory for jupyter $(jupyter --data-dir)
 
 # Store the current Work Dir
-alias wd='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device/Code/LifeBud_v2.0/'
-export WD='~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device/Code/LifeBud_v2.0'
+alias wd='cd ~/repos/LifeBud_v2.0'
+export WD='~/repos/LifeBud_v2.0'
 
 alias reset='source ~/.profile'
 
