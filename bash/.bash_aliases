@@ -39,6 +39,7 @@ alias ':q'='exit'
 
 # Store the current Work Dir
 alias wd='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device/Code/LifeBud_v2.0/'
+export WD='~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device/Code/LifeBud_v2.0'
 
 alias reset='source ~/.profile'
 
