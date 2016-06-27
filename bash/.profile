@@ -6,6 +6,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+      . ~/.git-completion.bash
+fi
+
 
 # Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
@@ -66,4 +70,8 @@ export LS_COLORS
 export EVENT_NOEPOLL=1
 
 
-#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+
+shopt -s extglob # using for rm !(filename)
+

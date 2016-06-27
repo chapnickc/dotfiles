@@ -8,24 +8,17 @@ set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 " --------------------------------------------
 "                 Vundle
 " --------------------------------------------
-
-"--------------------------
-"       Begin Vundle
-"--------------------------
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'             " required
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jpalardy/vim-slime'
-Plugin 'hdima/python-syntax'
-Plugin 'scrooloose/nerdcommenter'
-"Plugin 'epeli/slimux' 
+    Plugin 'VundleVim/Vundle.vim'             " required
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'godlygeek/tabular'
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'jpalardy/vim-slime'
+    Plugin 'hdima/python-syntax'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'lervag/vimtex'
 call vundle#end()                         
-"--------------------------
-"        End Vundle
-"--------------------------
 
 filetype plugin indent on    " required
 
@@ -38,14 +31,14 @@ filetype plugin indent on    " required
 
 
 "          Initialize
-set term=screen-256color       " define terminal. should be the same
-                                " as that defined in .tmux.conf. Note:
-                                " had to use screen rather than xterm
+set term=screen-256color       " define terminal. should be the same as in .tmux.conf. 
 
 
 "     Key Mapping
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
 nnoremap <leader>w :w<CR>                 " Type <Space>w to save file
+nnoremap <leader>q :q<CR>
+nnoremap <leader>wq :wq<CR>                 " Type <Space>wq to save and quit file
 nmap <leader>l :bnext<CR>                 " Move to the next buffer
 nmap <leader>h :bprevious<CR>             " Move to the previous buffer
 map <F7> mzgg=G`z                         " Reindent the entire file
@@ -61,8 +54,8 @@ set autoread                       " Reload files changed outside vim
 set hidden                         " allows buffers to be hidden if they are modified
 set pastetoggle=<F2>               " Paste without being smart
 set nowrap                         " Don't wrap lines
-set clipboard=unnamed              " Use the system clipboard
-set clipboard=unnamedplus          " registers map to the clipboard, and can be pasted with CTRL-V
+"set clipboard=unnamed              " Use the system clipboard
+"set clipboard=unnamedplus          " registers map to the clipboard, and can be pasted with CTRL-V
 set ruler                          " Cursor position
 set autowrite                      " Automatically save file
 set showmatch                      " Show matching brackets
@@ -112,7 +105,14 @@ highlight LineNr       ctermbg=234  ctermfg=236
 "highlight PmenuSel     ctermbg=3   ctermfg=1
 "highlight SpellBad     ctermbg=0   ctermfg=1
 
-
+" --------------------------------------------
+"                  Vimtex
+" --------------------------------------------
+"nnoremap <leader>co :VimtexCompile<CR> 
+nnoremap <leader>co :VimtexCompileSS<CR> 
+nnoremap <leader>ts :VimtexStop<CR> 
+nnoremap <leader>tv :VimtexView<CR>
+nnoremap <leader>tc :VimtexClean<CR>
 
 " --------------------------------------------
 "                  Vim-Slime
@@ -151,17 +151,6 @@ let g:vim_markdown_folding_disabled = 1
 let python_highlight_all = 1 " enable all Python syntax highlighting features
 
 " --------------------------------------------
-"                    Slimux
-" --------------------------------------------
-"map <leader><tab> :SlimuxREPLSendLine<CR>
-"vmap <leader><tab> :SlimuxREPLSendSelection<CR>
-"nmap <leader>N :SlimuxREPLConfigure<CR>
-
-"let g:slimux_select_from_current_window = 0
-"let g:slimux_exclude_vim_pane = 0
-
-
-" --------------------------------------------
 "               YouCompleteMe
 " --------------------------------------------
 "set completeopt-=preview                       " remove documentation preview
@@ -169,10 +158,6 @@ let python_highlight_all = 1 " enable all Python syntax highlighting features
 "let g:ycm_echo_current_diagnostic = 0
 "let g:ycm_confirm_extra_conf = 0               " dont ask about .ycm_extra_conf file
 "let g:ycm_show_diagnostics_ui = 0              " remove extra diganostics 
-
-"      Vimtex
-"let g:vimtex_enable = 1
-"let g:tex_flavor = 'latex'
 
 " non-recursively map '\+[' to go to documentation
 "nnoremap <Leader>[ :YcmCompleter GetDoc<CR>
