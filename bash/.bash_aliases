@@ -1,4 +1,3 @@
-
 # -------------------------------------
 #              Dynamic 
 # -------------------------------------
@@ -25,7 +24,8 @@ alias reset='source ~/.profile'
 # -------------------------------------
 #		        Vim
 # -------------------------------------
-alias vim='/usr/local/Cellar/vim/7.4.1952/bin/vim'
+#alias vim='/usr/local/Cellar/vim/7.4.1952/bin/vim'
+alias vim='mvim -v'
 alias v="vim"
 alias vi="vim"
 
@@ -34,6 +34,8 @@ alias vi="vim"
 # ------------------------------------------------
 # Quick git push 
 alias qpush='git add --all && git commit -m "-" && git push'
+
+alias gchk='git checkout'
 
 
 # -------------------------------------
@@ -58,4 +60,7 @@ alias kmux='tmux kill-pane -t '
 alias smux='tmux send-keys -t '
 
 
+
+alias pingPi0="ping 192.168.1.218"
+alias pingPi1="ping 192.168.1.219"
 
