@@ -66,3 +66,4 @@ export EVENT_NOPOLL=1
 
 # Mute Startup
 # sudo nvram SystemAudioVolume=%80
+
