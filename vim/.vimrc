@@ -100,7 +100,8 @@ let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 
 xmap <leader><tab> <Plug>SlimeRegionSend
-nmap <leader><tab> <Plug>SlimeParagraphSend
+nmap <leader><tab> <Plug>SlimeLineSend
+nmap <leader>p<tab> <Plug>SlimeParagraphSend
 nmap <leader>N     <Plug>SlimeConfig
 
 
