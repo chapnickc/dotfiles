@@ -5,6 +5,12 @@ alias wd='cd ~/repos/LifeBud_v2.0'
 alias gd='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ Device'
 
 # -------------------------------------
+#          Raspberry Pi
+# -------------------------------------
+alias goPi="ssh pi@192.168.1.219"
+
+
+# -------------------------------------
 #	        General
 # -------------------------------------
 alias ls='ls -G'
@@ -64,3 +70,5 @@ alias smux='tmux send-keys -t '
 alias pingPi0="ping 192.168.1.218"
 alias pingPi1="ping 192.168.1.219"
 
+alias unziptargz='tar -xvzf'
+alias nmap='/usr/local/Cellar/nmap/7.12/bin/nmap'
