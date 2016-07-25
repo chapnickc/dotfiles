@@ -8,6 +8,9 @@ alias gd='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/In-Ear\ Health\ Monitoring\ De
 #          Raspberry Pi
 # -------------------------------------
 alias goPi="ssh pi@192.168.1.219"
+alias goPiSLU="ssh pi@165.134.10.30"
+
+alias goTuring="ssh chapnickc@turing.slu.edu"
 
 
 # -------------------------------------
@@ -67,8 +70,11 @@ alias smux='tmux send-keys -t '
 
 
 
-alias pingPi0="ping 192.168.1.218"
-alias pingPi1="ping 192.168.1.219"
+alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab'
+
 
 alias unziptargz='tar -xvzf'
 alias nmap='/usr/local/Cellar/nmap/7.12/bin/nmap'
+
+alias gb="git branch"
+alias gs="git status"

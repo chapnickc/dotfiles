@@ -34,6 +34,7 @@ export LANGUAGE=en_US.UTF-8
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
+#export GLOBIGNORE=__pycache__
 
 # use any key to get things flowing again
 stty ixany
@@ -53,8 +54,7 @@ txtrst='\e[0m'    # Text Reset
 PS1="\[$bldgrn\][\[$txtrst\] \[$bldpur\]\u: \[$royal_blue\]\W \[$txtrst\]\[$bldgrn\]]\[$txtrst\] \[$bldylw\]➯ \[$txtrst\] "
 
 
-LS_COLORS="di=1;96:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90"
-export LS_COLORS
+export LS_COLORS="di=1;96:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
@@ -66,4 +66,11 @@ export EVENT_NOPOLL=1
 
 # Mute Startup
 # sudo nvram SystemAudioVolume=%80
+
+export WORKON_HOME="~/.virtualenvs"
+. "/usr/local/bin/virtualenvwrapper.sh"
+
+
+
+
 

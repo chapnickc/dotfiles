@@ -20,6 +20,8 @@ call vundle#begin()
     Plugin 'hdima/python-syntax'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'lervag/vimtex'
+    Plugin 'vim-scripts/Vim-R-plugin'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()                         
 
 filetype plugin indent on    " required
@@ -49,7 +51,7 @@ set autoread                       " Reload files changed outside vim
 set hidden                         " allows buffers to be hidden if they are modified
 set pastetoggle=<F2>               " Paste without being smart
 set nowrap                         " Don't wrap lines
-"set clipboard=unnamed              " Use the system clipboard
+set clipboard=unnamed              " Use the system clipboard
 "set clipboard=unnamedplus          " registers map to the clipboard, and can be pasted with CTRL-V
 set ruler                          " Cursor position
 set autowrite                      " Automatically save file
@@ -57,6 +59,7 @@ set showmatch                      " Show matching brackets
 set encoding=utf-8                 " File encoding
 set termencoding=utf-8
 set fileencoding=utf-8
+set timeoutlen=900 ttimeoutlen=10
 
 
 " --------------------------------------------------------
@@ -120,7 +123,7 @@ let g:airline_theme = 'murmur'
 "               Vim Markdown
 " --------------------------------------------
 let g:vim_markdown_math=1                        " Enable LaTeX math
-"let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 1
 
 " --------------------------------------------
 "               Python Syntax
@@ -132,10 +135,13 @@ let python_highlight_all=1 " enable all Python syntax highlighting features
 " --------------------------------------------
 set completeopt-=preview                       " remove documentation preview
 set pumheight=20                               " Limit popup menu height
-let g:ycm_echo_current_diagnostic = 0
-let g:ycm_confirm_extra_conf = 0               " dont ask about .ycm_extra_conf file
-let g:ycm_show_diagnostics_ui = 0              " remove extra diganostics 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_echo_current_diagnostic = 0
+"let g:ycm_confirm_extra_conf = 0               " dont ask about .ycm_extra_conf file
+"let g:ycm_show_diagnostics_ui = 0              " remove extra diganostics 
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 nnoremap <Leader>[ :YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
 nnoremap <Leader>] :pclose<CR>                 " non-recursively map '\+]' to close preview windows 
+
+"let g:ycm_path_to_python_interpreter = "/usr/local/bin/python3"
+" 
 
