@@ -52,6 +52,7 @@ alias gchk='git checkout'
 # -------------------------------------
 # making the python 3 the default interpreter.
 alias python=python3
+alias pip=pip3
 alias ipy=ipython        # quicker access to ipython
 
 alias deac='deactivate'  # for virtual environments

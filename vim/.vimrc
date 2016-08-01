@@ -40,6 +40,14 @@ nnoremap <leader>a @                      " for playing back macros
 nmap <leader>l :bnext<CR>                 " Move to the next buffer
 nmap <leader>h :bprevious<CR>             " Move to the previous buffer
 map <F7> mzgg=G`z                         " Reindent the entire file
+
+
+"alternate keys for indenting/unindenting
+nnoremap <Tab> >>
+nnoremap <S-Tab> <LT><LT>
+vnoremap <Tab> >
+vnoremap <S-Tab> <LT>
+
     
 
 "      General
@@ -135,13 +143,8 @@ let python_highlight_all=1 " enable all Python syntax highlighting features
 " --------------------------------------------
 set completeopt-=preview                       " remove documentation preview
 set pumheight=20                               " Limit popup menu height
-"let g:ycm_echo_current_diagnostic = 0
-"let g:ycm_confirm_extra_conf = 0               " dont ask about .ycm_extra_conf file
-"let g:ycm_show_diagnostics_ui = 0              " remove extra diganostics 
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/.ycm_extra_conf.py'
 nnoremap <Leader>[ :YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
 nnoremap <Leader>] :pclose<CR>                 " non-recursively map '\+]' to close preview windows 
-
-"let g:ycm_path_to_python_interpreter = "/usr/local/bin/python3"
-" 
 
