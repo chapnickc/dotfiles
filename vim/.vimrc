@@ -17,10 +17,11 @@ call vundle#begin()
     Plugin 'godlygeek/tabular'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'jpalardy/vim-slime'
-    Plugin 'hdima/python-syntax'
+    "Plugin 'hdima/python-syntax'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'lervag/vimtex'
-    Plugin 'vim-scripts/Vim-R-plugin'
+    Plugin 'toyamarinyon/vim-swift'
+    "Plugin 'vim-scripts/Vim-R-plugin'
     Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()                         
 
