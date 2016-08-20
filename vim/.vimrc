@@ -17,16 +17,21 @@ call vundle#begin()
     Plugin 'godlygeek/tabular'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'jpalardy/vim-slime'
-    "Plugin 'hdima/python-syntax'
+    Plugin 'hdima/python-syntax'
+    Plugin 'morhetz/gruvbox'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'lervag/vimtex'
     Plugin 'toyamarinyon/vim-swift'
+    "Plugin 'jaxbot/semantic-highlight.vim'
+    "Plugin 'dracula/vim'
     "Plugin 'vim-scripts/Vim-R-plugin'
     Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'chriskempson/vim-tomorrow-theme'
 call vundle#end()                         
 
 filetype plugin indent on    " required
 " ---------------------------------------------
+
 
 
 "          Initialize
@@ -52,7 +57,8 @@ vnoremap <S-Tab> <LT>
     
 
 "      General
-let &t_Co=256                      " Enable 256 colors
+set t_Co=256                      " Enable 256 colors
+
 set number                         " Show line numbers
 set backspace=indent,eol,start     " Allow backspace in insert mode
 set laststatus=2                   " Always show the status bar
@@ -92,8 +98,10 @@ set mouse=a                         " Enable Mouse in all modes
 " --------------------------------------------
 syntax enable 
 set background=dark
-colorscheme zeno
-
+colorscheme gruvbox
+"colorscheme zeno
+"colorscheme Tomorrow-Night-Eighties
+"
 " --------------------------------------------
 "                  Vimtex
 " --------------------------------------------

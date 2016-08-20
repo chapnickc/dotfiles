@@ -6,6 +6,7 @@ fi
 if [ -f ~/.git-completion.bash ]; then
       . ~/.git-completion.bash
 fi
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 export PATH="/usr/local/bin:$PATH"
 
