@@ -2501,6 +2501,10 @@
 	<string>A660ABD1-22A9-45DE-949A-F0582C21E353</string>
 	<key>NoSyncLastTipTime</key>
 	<real>488666968.18486899</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
