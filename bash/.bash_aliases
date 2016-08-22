@@ -43,7 +43,7 @@ alias vi="vim"
 # ------------------------------------------------
 # Quick git push 
 alias qpush='git add --all && git commit -m "-" && git push'
-
+alias gs='git status'
 alias gchk='git checkout'
 
 
