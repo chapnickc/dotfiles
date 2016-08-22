@@ -71,7 +71,7 @@ alias smux='tmux send-keys -t '
 
 
 
-alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab'
+#alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab'
 
 
 alias unziptargz='tar -xvzf'

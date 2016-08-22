@@ -6,7 +6,7 @@ set rtp+=~/dotfiles/vim/
 " --------------------------------------------
 "                 Vundle
 " --------------------------------------------
-set rtp+=~/dotfiles/vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 
 call vundle#begin()
