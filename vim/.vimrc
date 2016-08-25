@@ -22,11 +22,13 @@ call vundle#begin()
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'lervag/vimtex'
     Plugin 'toyamarinyon/vim-swift'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'chriskempson/vim-tomorrow-theme'
+    Plugin 'flazz/vim-colorschemes'
     "Plugin 'jaxbot/semantic-highlight.vim'
     "Plugin 'dracula/vim'
     "Plugin 'vim-scripts/Vim-R-plugin'
-    Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'chriskempson/vim-tomorrow-theme'
+    "Plugin 'raphamorim/lucario'
 call vundle#end()                         
 
 filetype plugin indent on    " required
@@ -98,7 +100,8 @@ set mouse=a                         " Enable Mouse in all modes
 " --------------------------------------------
 syntax enable 
 set background=dark
-colorscheme gruvbox
+colorscheme luna-term
+"colorscheme gruvbox
 "colorscheme zeno
 "colorscheme Tomorrow-Night-Eighties
 "
