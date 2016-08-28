@@ -53,12 +53,10 @@ txtrst='\e[0m'    # Text Reset
 
 # http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
 # Setup the normal PS1 here
-
-
 prompt_command () {
 	case $PWD in
 		${HOME}) current_dir="~";;
-		${HOME}/*/*) current_dir='$(basename $(dirname "$PWD"))/$(basename "$PWD")';;
+		${HOME}/*/*) current_dir='$(basename "$(dirname "$PWD")")/$(basename "$PWD")';;
 		${HOME}/*) current_dir='~/$(basename "$PWD")';;
 		*) current_dir="$PWD";;
 	esac
