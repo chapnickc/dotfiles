@@ -51,8 +51,20 @@ lightblue='\e[1;94m' #light blue
 royal_blue='\e[38;5;69m'
 txtrst='\e[0m'    # Text Reset
 
+
+# http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
 # Setup the normal PS1 here
-PS1="\[$bldgrn\][ \[$bldpur\]\u: \[$royal_blue\]\W \[$bldgrn\]] \[$bldylw\]➯ \[$txtrst\] "
+prompt_command () {
+	case $PWD in
+		${HOME}) current_dir="~";;
+		${HOME}/*/*) current_dir='$(basename $(dirname "$PWD"))/$(basename "$PWD")';;
+		${HOME}/*) current_dir='~/$(basename "$PWD")';;
+		*) current_dir="$PWD";;
+	esac
+    export PS1="\[$bldgrn\][ \[$bldpur\]\u:\[$royal_blue\] ${current_dir} \[$bldgrn\]] \[$bldylw\]➯ \[$txtrst\] "
+}
+PROMPT_COMMAND=prompt_command
+
 
 
 export LS_COLORS="di=1;96:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90"
