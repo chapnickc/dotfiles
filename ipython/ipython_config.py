@@ -7,7 +7,7 @@ c = get_config()
 c.TerminalIPythonApp.display_banner = True
 c.InteractiveShell.autoindent = False
 c.InteractiveShell.colors = 'Linux'
-c.InteractiveShell.editor = 'vim'
+c.TerminalInteractiveShell.editing_mode = 'vi'
 #c.InteractiveShell.pylab = 'qt'
 
 #c.PromptManager.in_template  = '[\#] In: '
