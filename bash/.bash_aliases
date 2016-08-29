@@ -1,7 +1,7 @@
 # -------------------------------------
 #              Dynamic 
 # -------------------------------------
-alias gd='cd ~/Google\ Drive/Saint\ Louis\ University/Fall2016/'
+alias gd='cd ~/Google\ Drive/Fall2016/'
 
 
 
@@ -11,7 +11,7 @@ alias gd='cd ~/Google\ Drive/Saint\ Louis\ University/Fall2016/'
 alias ls='ls -G'
 alias l='ls'
 alias la="ls -A"       # List including dotfiles
-alias ll="ls -lA"
+alias ll="ls -1"
 alias ld="ls -d */"   # List only directories
 
 alias ..="cd .."

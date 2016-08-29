@@ -27,12 +27,10 @@ call vundle#begin()
     Plugin 'morhetz/gruvbox'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'lervag/vimtex'
-"    Plugin 'SirVer/ultisnips'
-    "Plugin 'honza/vim-snippets'
-
-   
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+    
     "Plugin 'godlygeek/tabular'
-
     "Plugin 'jaxbot/semantic-highlight.vim'
     "Plugin 'dracula/vim'
     "Plugin 'vim-scripts/Vim-R-plugin'
@@ -41,10 +39,10 @@ call vundle#end()
 
 filetype plugin indent on    " required
 " ---------------------------------------------
-
-let g:UltiSnipsExpandTrigger="<S-CR>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsExpandTrigger="<S-CR>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "          Initialize
 set term=screen-256color       " define terminal. should be the same as in .tmux.conf. 
@@ -59,7 +57,6 @@ nmap <leader>l :bnext<CR>                 " Move to the next buffer
 nmap <leader>h :bprevious<CR>             " Move to the previous buffer
 map <F7> mzgg=G`z                         " Reindent the entire file
 
-
 "alternate keys for indenting/unindenting
 "nnoremap <Tab> >>
 "nnoremap <S-Tab> <LT><LT>
@@ -70,7 +67,6 @@ map <F7> mzgg=G`z                         " Reindent the entire file
 
 "      General
 set t_Co=256                      " Enable 256 colors
-
 set number                         " Show line numbers
 set backspace=indent,eol,start     " Allow backspace in insert mode
 set laststatus=2                   " Always show the status bar
@@ -79,14 +75,16 @@ set hidden                         " allows buffers to be hidden if they are mod
 set pastetoggle=<F2>               " Paste without being smart
 set nowrap                         " Don't wrap lines
 set clipboard=unnamed              " Use the system clipboard
-"set clipboard=unnamedplus          " registers map to the clipboard, and can be pasted with CTRL-V
 set ruler                          " Cursor position
 set autowrite                      " Automatically save file
 set showmatch                      " Show matching brackets
-set encoding=utf-8                 " File encoding
+set encoding=utf-8 
 set termencoding=utf-8
 set fileencoding=utf-8
 set timeoutlen=900 ttimeoutlen=10
+"set nohlsearch	                        " Don't continue to highlight searched phrases.
+set incsearch		                    " But do highlight as you type your search.
+set ignorecase		                    " Make searches case-insensitive.
 
 
 " --------------------------------------------------------
@@ -180,23 +178,17 @@ let g:indentLine_color_term = 237
 " --------------------------------------------
 "               VimTeX
 " --------------------------------------------
-"" LaTeX (rubber) macro for compiling
-"nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
-" Change default target to pdf, if not dvi is used
-"let g:Tex_DefaultTargetFormat = 'pdf'
- 
-" Setup the compile rule for pdf to use pdflatex with synctex enabled
-"let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*' 
- 
-" PDF display rule
-"let g:Tex_ViewRule_pdf = 'Skim'
+"autocmd Filetype tex setl updatetime=1
+"let g:tex_latexmk_continuous = 0
+"let g:latex_latexmk_background = 0
+"let g:livepreview_previewer = 'open -a S'
+"let g:vimtex_latexmk_build_dir = './build'
+let g:vimtex_view_general_viewer = 'open'
+let g:vimtex_view_general_options = '@pdf'
 
 nnoremap <leader>c :VimtexCompileSS<CR> 
 nnoremap <leader>v :VimtexView<CR>
 nnoremap <leader>tc :VimtexClean<CR>
-"
-""  forward search
-"nnoremap <leader>f :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline -r <C-r>=line('.')<CR> %<.pdf %<CR><CR>
 
 
 
