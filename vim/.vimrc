@@ -39,11 +39,6 @@ call vundle#end()
 
 filetype plugin indent on    " required
 " ---------------------------------------------
-let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsExpandTrigger="<S-CR>"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 "          Initialize
 set term=screen-256color       " define terminal. should be the same as in .tmux.conf. 
 
@@ -108,7 +103,7 @@ set mouse=a                         " Enable Mouse in all modes
 " --------------------------------------------
 syntax enable 
 set background=dark
-colorscheme luna-term  " gruvbox zeno Tomorrow-Night-Eighties
+colorscheme PaperColor " luna-term gruvbox zeno Tomorrow-Night-Eighties
 
 " --------------------------------------------
 "                  Vim-Slime
@@ -171,18 +166,13 @@ let g:matlab_vimlab_vertical=1
 " --------------------------------------------
 "               indentLine
 " --------------------------------------------
-
 "let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_color_term = 237
 
-" --------------------------------------------
+" ----------------------------------------
 "               VimTeX
-" --------------------------------------------
-"autocmd Filetype tex setl updatetime=1
-"let g:tex_latexmk_continuous = 0
-"let g:latex_latexmk_background = 0
-"let g:livepreview_previewer = 'open -a S'
-"let g:vimtex_latexmk_build_dir = './build'
+" ----------------------------------------
+let g:vimtex_latexmk_build_dir = './build'
 let g:vimtex_view_general_viewer = 'open'
 let g:vimtex_view_general_options = '@pdf'
 
@@ -190,6 +180,13 @@ nnoremap <leader>c :VimtexCompileSS<CR>
 nnoremap <leader>v :VimtexView<CR>
 nnoremap <leader>tc :VimtexClean<CR>
 
-
-
+" ----------------------------------------
+"               UltiSnips
+" ----------------------------------------
+let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsExpandTrigger="<S-CR>"
+""let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"
+"
 
