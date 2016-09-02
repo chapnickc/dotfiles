@@ -1,3 +1,4 @@
+"https://github.com/chrokh/shell-colors "
 set nocompatible              " be iMproved, required for vundle
 
 " set the runtime path to include Vundle and initialize
@@ -29,6 +30,7 @@ call vundle#begin()
     Plugin 'lervag/vimtex'
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
+    Plugin 'chriskempson/base16-vim'
     
     "Plugin 'godlygeek/tabular'
     "Plugin 'jaxbot/semantic-highlight.vim'
@@ -43,14 +45,19 @@ filetype plugin indent on    " required
 set term=screen-256color       " define terminal. should be the same as in .tmux.conf. 
 
 "     Key Mapping
+"    viw"0p - allows you to replace inner word with that in the register
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
 nnoremap <leader>w :w<CR>                 " Type <Space>w to save file
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>                 " Type <Space>wq to save and quit file
-nnoremap <leader>a @                      " for playing back macros
-nmap <leader>l :bnext<CR>                 " Move to the next buffer
-nmap <leader>h :bprevious<CR>             " Move to the previous buffer
-map <F7> mzgg=G`z                         " Reindent the entire file
+nnoremap <leader>bd :bd<CR>                 " Type <Space>bd to close a buffer
+"nnoremap <leader>a @                       " for playing back macros
+nmap <leader>l :bnext<CR>                   " Move to the next buffer
+nmap <leader>h :bprevious<CR>               " Move to the previous buffer
+map <F7> mzgg=G`z                           " Reindent the entire file
+
+xnoremap p "_dP
+xnoremap <leader>p "_dP                     " replace inner work with that in registerviw<Space>p 
 
 "alternate keys for indenting/unindenting
 "nnoremap <Tab> >>
@@ -67,7 +74,7 @@ set backspace=indent,eol,start     " Allow backspace in insert mode
 set laststatus=2                   " Always show the status bar
 set autoread                       " Reload files changed outside vim
 set hidden                         " allows buffers to be hidden if they are modified
-set pastetoggle=<F2>               " Paste without being smart
+set pastetoggle=<c-a>               " Paste without being smart
 set nowrap                         " Don't wrap lines
 set clipboard=unnamed              " Use the system clipboard
 set ruler                          " Cursor position
@@ -77,9 +84,10 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set timeoutlen=900 ttimeoutlen=10
-"set nohlsearch	                        " Don't continue to highlight searched phrases.
+set nohlsearch	                        " Don't continue to highlight searched phrases.
 set incsearch		                    " But do highlight as you type your search.
 set ignorecase		                    " Make searches case-insensitive.
+set cole=2
 
 
 " --------------------------------------------------------
@@ -101,9 +109,18 @@ set mouse=a                         " Enable Mouse in all modes
 " --------------------------------------------
 "                  Theme
 " --------------------------------------------
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256 " Access colors present in 256 colorspace
+    source ~/.vimrc_background
+endif
+
 syntax enable 
 set background=dark
-colorscheme PaperColor " luna-term gruvbox zeno Tomorrow-Night-Eighties
+"colorscheme base16-default-dark PaperColor  luna-term gruvbox zeno Tomorrow-Night-Eighties
+"set cole=2
+"hi Conceal ctermfg=122       "ctermbg=32 term=bold cterm=bold 
+
+
 
 " --------------------------------------------
 "                  Vim-Slime
@@ -129,13 +146,14 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme = 'murmur'
+let g:airline_theme = 'base16_eighties'
 
 " --------------------------------------------
 "               Vim Markdown
 " --------------------------------------------
 let g:vim_markdown_math=1                        " Enable LaTeX math
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 " --------------------------------------------
 "               Python Syntax
@@ -166,12 +184,13 @@ let g:matlab_vimlab_vertical=1
 " --------------------------------------------
 "               indentLine
 " --------------------------------------------
-"let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_color_term = 237
 
 " ----------------------------------------
 "               VimTeX
 " ----------------------------------------
+let g:vimtex_latexmk_continuous=0
 let g:vimtex_latexmk_build_dir = './build'
 let g:vimtex_view_general_viewer = 'open'
 let g:vimtex_view_general_options = '@pdf'
@@ -179,6 +198,13 @@ let g:vimtex_view_general_options = '@pdf'
 nnoremap <leader>c :VimtexCompileSS<CR> 
 nnoremap <leader>v :VimtexView<CR>
 nnoremap <leader>tc :VimtexClean<CR>
+
+"a = conceal accents/ligatures
+"d = conceal delimiters
+"g = conceal Greek
+"m = conceal math symbols
+"s = conceal superscripts/subscripts
+let g:tex_conceal= ''
 
 " ----------------------------------------
 "               UltiSnips

@@ -21,7 +21,7 @@ alias ....="cd ../../.."
 alias c='clear'
 alias reset='source ~/.profile'
 
-alias ':q'='exit'
+alias 'q'='exit'
 
 #alias nmap='/usr/local/Cellar/nmap/7.12/bin/nmap'
 

@@ -3,10 +3,13 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
 if [ -f ~/.git-completion.bash ]; then
       . ~/.git-completion.bash
 fi
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+# silently set the theme
+theme eighties --silent 
 
 export PATH="/usr/local/bin:$PATH"
 
