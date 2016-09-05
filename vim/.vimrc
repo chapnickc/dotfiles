@@ -24,17 +24,17 @@ call vundle#begin()
     Plugin 'toyamarinyon/vim-swift'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'chriskempson/vim-tomorrow-theme'    " Themes
-    Plugin 'morhetz/gruvbox'
-    Plugin 'flazz/vim-colorschemes'
+    "Plugin 'chriskempson/vim-tomorrow-theme'    " Themes
+    "Plugin 'morhetz/gruvbox'
+    "Plugin 'flazz/vim-colorschemes'
     Plugin 'lervag/vimtex'
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
     Plugin 'chriskempson/base16-vim'
-    
+    "Plugin 'SirVer/ultisnips'
+    "Plugin 'honza/vim-snippets'
+
+    "Plugin 'matze/vim-tex-fold'
     "Plugin 'godlygeek/tabular'
     "Plugin 'jaxbot/semantic-highlight.vim'
-    "Plugin 'dracula/vim'
     "Plugin 'vim-scripts/Vim-R-plugin'
     "Plugin 'raphamorim/lucario'
 call vundle#end()                         
@@ -58,6 +58,8 @@ map <F7> mzgg=G`z                           " Reindent the entire file
 
 xnoremap p "_dP
 xnoremap <leader>p "_dP                     " replace inner work with that in registerviw<Space>p 
+
+"autocmd FileType tex setlocal foldmethod=syntax
 
 "alternate keys for indenting/unindenting
 "nnoremap <Tab> >>
@@ -88,6 +90,7 @@ set nohlsearch	                        " Don't continue to highlight searched ph
 set incsearch		                    " But do highlight as you type your search.
 set ignorecase		                    " Make searches case-insensitive.
 set cole=2
+"set foldmethod=manual
 
 
 " --------------------------------------------------------
@@ -114,11 +117,17 @@ if filereadable(expand("~/.vimrc_background"))
     source ~/.vimrc_background
 endif
 
+
 syntax enable 
 set background=dark
 "colorscheme base16-default-dark PaperColor  luna-term gruvbox zeno Tomorrow-Night-Eighties
 "set cole=2
 "hi Conceal ctermfg=122       "ctermbg=32 term=bold cterm=bold 
+"
+"syn keyword pythonThis   cls self
+"syn match   pythonMember "\(cls\.\|self\.\)\@<=[A-Za-z_]\+\(\.\| \)"
+"hi link pythonThis    Comment
+"hi link pythonMember  Function
 
 
 
@@ -165,14 +174,16 @@ let python_highlight_all=1 " enable all Python syntax highlighting features
 " --------------------------------------------
 set completeopt-=preview                       " remove documentation preview
 set pumheight=20                               " Limit popup menu height
-let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_show_diagnostics_ui = 0
+" Use python3 completion
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/.ycm_extra_conf.py'
+let g:ycm_always_populate_location_list = 0 "diags
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-"let g:ycm_dont_warn_on_startup = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
 nnoremap <Leader>[ :YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
 nnoremap <Leader>] :pclose<CR>                 " non-recursively map '\+]' to close preview windows 
 
@@ -199,12 +210,17 @@ nnoremap <leader>c :VimtexCompileSS<CR>
 nnoremap <leader>v :VimtexView<CR>
 nnoremap <leader>tc :VimtexClean<CR>
 
+" ----------------------------------------
+"               Vim-TeX-Fold
+" ----------------------------------------
 "a = conceal accents/ligatures
 "d = conceal delimiters
 "g = conceal Greek
 "m = conceal math symbols
 "s = conceal superscripts/subscripts
 let g:tex_conceal= ''
+"let g:tex_fold_enable=1
+"let g:tex_fold_additional_envs = ['circuitikz']
 
 " ----------------------------------------
 "               UltiSnips
