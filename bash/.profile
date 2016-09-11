@@ -25,6 +25,7 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 
+
 # -------------------------------
 #            Python
 # -------------------------------
@@ -40,8 +41,7 @@ export WORKON_HOME="~/.virtualenvs"
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 # silently set the theme for vim and iTerm2
-theme monokai #solar-flare; 
-clear
+theme materia;  clear #solar-flare; 
 
 # simplified color names for easy access
 # http://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
