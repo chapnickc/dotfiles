@@ -26,6 +26,8 @@ call vundle#begin()
     Plugin 'matze/vim-tex-fold'
     Plugin 'lervag/vimtex'
     Plugin 'chriskempson/base16-vim'
+    Plugin 'xolox/vim-misc'
+    Plugin 'xolox/vim-notes'
 call vundle#end()                         
 filetype plugin indent on    " required
 
@@ -34,7 +36,7 @@ filetype plugin indent on    " required
 " ---------------------------------------------
 "               General
 " ---------------------------------------------
-set term=xterm-256color                 " define terminal. should be the same as in .tmux.conf.  previously 'screen-256color'
+set term=screen-256color                 " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
 set t_Co=256                            " Enable 256 colors
 set encoding=utf-8 
 set termencoding=utf-8
@@ -98,14 +100,16 @@ map <F7> mzgg=G`z                           " Reindent the entire file
 " --------------------------------------------
 "                  Theme
 " --------------------------------------------
+au BufRead,BufNewFile *.m set filetype=matlab
 
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256 " Access colors present in 256 colorspace
-    source ~/.vimrc_background
-endif
-
+"if filereadable(expand("~/.vimrc_background"))
+    "let base16colorspace=256 " Access colors present in 256 colorspace
+    "source ~/.vimrc_background
+"endif
+"let base16colorspace=256  " Access colors present in 256 colorspace
 syntax enable 
 set background=dark
+colorscheme zeno
 
 " --------------------------------------------
 "                  Vim-Slime
@@ -180,6 +184,7 @@ let g:indentLine_color_term = 238 "252 237
 "               VimTeX
 " ----------------------------------------
 let g:vimtex_latexmk_continuous=0
+let g:vimtex_latexmk_callback=0
 let g:vimtex_latexmk_build_dir = './build'
 let g:vimtex_view_general_viewer = 'open'
 let g:vimtex_view_general_options = '@pdf'
@@ -201,4 +206,9 @@ let g:tex_conceal= ''
 let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular']
 
+" ----------------------------------------
+"               Vim-Notes
+" ----------------------------------------
+let g:notes_directories = ['~/Google\ Drive/MEDIC\ Lab\ Projects/Epilepsy\ Monitoring/docs/']  " '~/Google\ Drive/Notes',
 
+let g:notes_suffix = '.txt'

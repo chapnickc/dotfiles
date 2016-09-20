@@ -2,6 +2,7 @@
 #              Dynamic 
 # -------------------------------------
 alias gd='cd ~/Google\ Drive/Fall2016/'
+alias em='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/Epilepsy\ Monitoring'
 
 
 
@@ -53,6 +54,7 @@ alias deac='deactivate'  # for virtual environments
 #	           Tmux
 # -------------------------------------
 alias mux='tmux'
+alias t='tmux'
 #alias lmux='tmux ls'
 #alias lpmux='tmux list-panes -a'
 #alias newmux='tmux new-session -n Newmux'
