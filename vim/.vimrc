@@ -80,6 +80,7 @@ set mouse=a                         " Enable Mouse in all modes
 "                   Key Mapping
 " --------------------------------------------------------
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
+nnoremap <leader>r :source ~/.vimrc<CR>   
 nnoremap <leader>w :w<CR>                 " Type <Space>w to save file
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>                 " Type <Space>wq to save and quit file

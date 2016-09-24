@@ -4,6 +4,8 @@
 alias gd='cd ~/Google\ Drive/Fall2016/'
 alias em='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/Epilepsy\ Monitoring'
 
+#git ls-files src/ tools/config/ tools/serial_read/ lib/MAX30100/ lib/TMP006/ | xargs wc -l
+
 
 
 # -------------------------------------
@@ -69,4 +71,5 @@ alias t='tmux'
 #	           MATLAB
 # -------------------------------------
 alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab -nodesktop' 
+
 
