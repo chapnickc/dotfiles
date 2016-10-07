@@ -205,7 +205,7 @@ nnoremap <leader>tc :VimtexClean<CR>
 let g:tex_conceal= ''
 
 let g:tex_fold_enable=0
-let g:tex_fold_additional_envs = ['circuitikz', 'tabular']
+let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu']
 
 " ----------------------------------------
 "               Vim-Notes
