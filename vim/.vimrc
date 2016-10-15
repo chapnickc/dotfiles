@@ -133,10 +133,10 @@ nmap <leader>N     <Plug>SlimeConfig
 set noshowmode                                     " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 let g:airline_powerline_fonts = 1                  " Allows for special symbols
-let g:airline_section_z = '%'                      " Make the right side empty
+let g:airline_section_z = '%c'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme = 'base16_isotope'
+let g:airline_theme = 'understated'
 
 " --------------------------------------------
 "               Vim Markdown
@@ -205,7 +205,7 @@ nnoremap <leader>tc :VimtexClean<CR>
 let g:tex_conceal= ''
 
 let g:tex_fold_enable=0
-let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu']
+let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh']
 
 " ----------------------------------------
 "               Vim-Notes

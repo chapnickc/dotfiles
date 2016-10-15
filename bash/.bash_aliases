@@ -47,7 +47,7 @@ alias gs="git status"
 #	          Python
 # -------------------------------------
 # making the python 3 the default interpreter.
-alias python=python3
+alias python="python3"
 alias ipy=ipython        # quicker access to ipython
 alias deac='deactivate'  # for virtual environments
 
