@@ -60,13 +60,16 @@ royalBlue='\[\e[38;5;69m\]'
 springGreen='\[\e[1;38;5;48m\]'
 bldOrange='\[\e[38;5;202m\]'
 pink='\[\e[1;38;5;200m\]'
+
+# ➠  ⫥ ⨂ ⧕ ⧕
+arrow2='⇲' 
 option='⎇ ⌥ '
 arrow='➯ '
-arrow2='⇲'
 wave='⏦'
-sq_infin='⋊'
+sq_infin='⋊'    #⧕
 sum='∑'
 end='\[\e[0m\]'                 # Text Reset
+stopper='⋊'
 
 
 # http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
@@ -88,7 +91,7 @@ prompt_command () {
         venv=''
     fi
 
-    export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${sq_infin} ${end}"
+    export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${stopper} ${end}"
 }
 
 PROMPT_COMMAND=prompt_command
