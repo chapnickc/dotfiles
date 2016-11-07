@@ -24,6 +24,7 @@ call vundle#begin()
     Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'matze/vim-tex-fold'
     Plugin 'lervag/vimtex'
+    Plugin 'tpope/vim-surround'
     "Plugin 'ervandew/screen'                    " required for VimLab
     "Plugin 'dajero/VimLab'                      " matlab assistance
     "Plugin 'toyamarinyon/vim-swift'
@@ -103,6 +104,7 @@ map <F7> mzgg=G`z                           " Reindent the entire file
 "                  Colors
 " --------------------------------------------
 au BufRead,BufNewFile *.m set filetype=matlab
+autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
 
 
 "if filereadable(expand("~/.vimrc_background"))
@@ -152,7 +154,7 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%c'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme = 'kolor'    "'understated'
+let g:airline_theme =  'bubblegum'       "'kolor', 'understated'
 
 " --------------------------------------------
 "               Vim Markdown
