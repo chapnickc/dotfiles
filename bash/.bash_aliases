@@ -1,16 +1,9 @@
 # -------------------------------------
 #              Dynamic 
 # -------------------------------------
-alias gd='cd ~/Google\ Drive/Fall2016/'
-
-
-
-# -------------------------------------
-#	        General
-# -------------------------------------
-alias ls='ls -G'
+alias ls='ls --color=auto'
 alias l='ls'
-alias la="ls -A"       # List including dotfiles
+alias la="ls -a"       # List including dotfiles
 alias ll="ls -1"
 alias ld="ls -d */"   # List only directories
 
@@ -28,7 +21,6 @@ alias 'q'='exit'
 # -------------------------------------
 #		        Vim
 # -------------------------------------
-alias vim='mvim -v'
 alias v="vim"
 alias vi="vim"
 
@@ -45,7 +37,7 @@ alias gs="git status"
 #	          Python
 # -------------------------------------
 # making the python 3 the default interpreter.
-alias python=python3
+#alias python=python3
 alias ipy=ipython        # quicker access to ipython
 alias deac='deactivate'  # for virtual environments
 
@@ -54,18 +46,4 @@ alias deac='deactivate'  # for virtual environments
 #	           Tmux
 # -------------------------------------
 alias mux='tmux'
-#alias lmux='tmux ls'
-#alias lpmux='tmux list-panes -a'
-#alias newmux='tmux new-session -n Newmux'
-##alias muxv= 'tmux split-window -h'
-#alias kmux='tmux kill-pane -t '
-#alias smux='tmux send-keys -t '
-
-
-
-
-# -------------------------------------
-#	           MATLAB
-# -------------------------------------
-alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab -nodesktop' 
 

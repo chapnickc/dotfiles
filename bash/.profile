@@ -21,28 +21,19 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
-# iTerm2 Integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 
 # -------------------------------
 #            Python
 # -------------------------------
 export PYTHONIOENCODING='UTF-8'
-export WORKON_HOME="~/.virtualenvs"
-. "/usr/local/bin/virtualenvwrapper.sh"
 
 
 # -------------------------------
 #           Themes
 # -------------------------------
 
-# silently set the theme for vim and iTerm2
-theme phd; clear
-
 # simplified color names for easy access
-# http://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
-# http://ascii-table.com/ansi-escape-sequences.php
 white='\[\e[37m\]'
 purple='\[\e[35m\]'
 bldgrn='\[\e[1;32m\]' # Green
@@ -57,18 +48,17 @@ royalBlue='\[\e[38;5;69m\]'
 springGreen='\[\e[1;38;5;48m\]'
 bldOrange='\[\e[38;5;202m\]'
 pink='\[\e[1;38;5;200m\]'
-option='⎇ ⌥ '
-arrow='➯ '
-arrow2='⇲'
-wave='⏦'
+
+# UTF-8 characters
 sq_infin='⋊'
-sum='∑'
+stopper='∆'
 end='\[\e[0m\]'                 # Text Reset
 
-
-# http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
-# Setup the normal PS1 here
+# ----------------------------------------
+#               Setup Prompt
+# ----------------------------------------
 prompt_command () {
+
 	case $PWD in
 		${HOME}) current_dir="~";;
 		${HOME}/*/*) current_dir='$(basename "$(dirname "$PWD")")/$(basename "$PWD")';;
@@ -76,16 +66,7 @@ prompt_command () {
 		*) current_dir="$PWD";;
 	esac
 
-    # Get current virtual environment
-    if [[ $VIRTUAL_ENV != "" ]] 
-    then
-        # Strip out the path and just leave the env name
-        venv="${white}(${VIRTUAL_ENV##*/})"
-    else
-        venv=''
-    fi
-
-    export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${sq_infin} ${end}"
+    export PS1="${pink}< ${royalBlue}\u@\h: ${springGreen}${current_dir}${pink} >${end} "
 }
 
 PROMPT_COMMAND=prompt_command

@@ -12,31 +12,12 @@ filetype off                  " required
 
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'               " required
-    Plugin 'Valloric/YouCompleteMe'
     Plugin 'scrooloose/nerdcommenter'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'jpalardy/vim-slime'                 " tmux integration
-    Plugin 'ervandew/screen'                    " required for VimLab
-    Plugin 'dajero/VimLab'                      " matlab assistance
-    Plugin 'hdima/python-syntax'
-    Plugin 'toyamarinyon/vim-swift'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'octol/vim-cpp-enhanced-highlight'
-    "Plugin 'chriskempson/vim-tomorrow-theme'    " Themes
-    "Plugin 'morhetz/gruvbox'
-    "Plugin 'flazz/vim-colorschemes'
-    Plugin 'lervag/vimtex'
-    Plugin 'chriskempson/base16-vim'
-    "Plugin 'SirVer/ultisnips'
-    "Plugin 'honza/vim-snippets'
-
-    "Plugin 'matze/vim-tex-fold'
-    "Plugin 'godlygeek/tabular'
-    "Plugin 'jaxbot/semantic-highlight.vim'
-    "Plugin 'vim-scripts/Vim-R-plugin'
-    "Plugin 'raphamorim/lucario'
+    "Plugin 'vim-airline/vim-airline'
+    "Plugin 'vim-airline/vim-airline-themes'
+    "Plugin 'jpalardy/vim-slime'                 " tmux integration
+    "Plugin 'plasticboy/vim-markdown'
+    "Plugin 'chriskempson/base16-vim'
 call vundle#end()                         
 
 filetype plugin indent on    " required
@@ -56,8 +37,8 @@ nmap <leader>l :bnext<CR>                   " Move to the next buffer
 nmap <leader>h :bprevious<CR>               " Move to the previous buffer
 map <F7> mzgg=G`z                           " Reindent the entire file
 
-xnoremap p "_dP
-xnoremap <leader>p "_dP                     " replace inner work with that in registerviw<Space>p 
+"xnoremap p "_dP
+"xnoremap <leader>p "_dP                     " replace inner work with that in registerviw<Space>p 
 
 "autocmd FileType tex setlocal foldmethod=syntax
 
@@ -90,7 +71,6 @@ set nohlsearch	                        " Don't continue to highlight searched ph
 set incsearch		                    " But do highlight as you type your search.
 set ignorecase		                    " Make searches case-insensitive.
 set cole=2
-"set foldmethod=manual
 
 
 " --------------------------------------------------------
@@ -112,23 +92,14 @@ set mouse=a                         " Enable Mouse in all modes
 " --------------------------------------------
 "                  Theme
 " --------------------------------------------
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256 " Access colors present in 256 colorspace
-    source ~/.vimrc_background
-endif
-
+"if filereadable(expand("~/.vimrc_background"))
+"    let base16colorspace=256 " Access colors present in 256 colorspace
+"    source ~/.vimrc_background
+"endif
 
 syntax enable 
 set background=dark
-"colorscheme base16-default-dark PaperColor  luna-term gruvbox zeno Tomorrow-Night-Eighties
-"set cole=2
-"hi Conceal ctermfg=122       "ctermbg=32 term=bold cterm=bold 
-"
-"syn keyword pythonThis   cls self
-"syn match   pythonMember "\(cls\.\|self\.\)\@<=[A-Za-z_]\+\(\.\| \)"
-"hi link pythonThis    Comment
-"hi link pythonMember  Function
-
+colo slate
 
 
 " --------------------------------------------
@@ -149,7 +120,7 @@ nmap <leader>N     <Plug>SlimeConfig
 " --------------------------------------------
 "            Vim-Airline (Powerline)
 " --------------------------------------------
-set noshowmode                                     " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"set noshowmode                                     " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%'                      " Make the right side empty
@@ -163,72 +134,4 @@ let g:airline_theme = 'base16_eighties'
 let g:vim_markdown_math=1                        " Enable LaTeX math
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
-
-" --------------------------------------------
-"               Python Syntax
-" --------------------------------------------
-let python_highlight_all=1 " enable all Python syntax highlighting features
-
-" --------------------------------------------
-"               YouCompleteMe
-" --------------------------------------------
-set completeopt-=preview                       " remove documentation preview
-set pumheight=20                               " Limit popup menu height
-"let g:ycm_show_diagnostics_ui = 0
-" Use python3 completion
-let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/.ycm_extra_conf.py'
-let g:ycm_always_populate_location_list = 0 "diags
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-
-nnoremap <Leader>[ :YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
-nnoremap <Leader>] :pclose<CR>                 " non-recursively map '\+]' to close preview windows 
-
-" --------------------------------------------
-"               VimLab
-" --------------------------------------------
-let g:matlab_vimlab_vertical=1
-
-" --------------------------------------------
-"               indentLine
-" --------------------------------------------
-let g:indentLine_color_dark = 1 " (default: 2)
-let g:indentLine_color_term = 237
-
-" ----------------------------------------
-"               VimTeX
-" ----------------------------------------
-let g:vimtex_latexmk_continuous=0
-let g:vimtex_latexmk_build_dir = './build'
-let g:vimtex_view_general_viewer = 'open'
-let g:vimtex_view_general_options = '@pdf'
-
-nnoremap <leader>c :VimtexCompileSS<CR> 
-nnoremap <leader>v :VimtexView<CR>
-nnoremap <leader>tc :VimtexClean<CR>
-
-" ----------------------------------------
-"               Vim-TeX-Fold
-" ----------------------------------------
-"a = conceal accents/ligatures
-"d = conceal delimiters
-"g = conceal Greek
-"m = conceal math symbols
-"s = conceal superscripts/subscripts
-let g:tex_conceal= ''
-"let g:tex_fold_enable=1
-"let g:tex_fold_additional_envs = ['circuitikz']
-
-" ----------------------------------------
-"               UltiSnips
-" ----------------------------------------
-let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsExpandTrigger="<S-CR>"
-""let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"
-"
 
