@@ -56,20 +56,21 @@ hi GitGutterDelete   ctermfg=2 ctermbg=1 cterm=bold
 "              Sytnax
 "matlab end = conditional
 " -----------------------------------------
-hi Statement        term=bold cterm=none ctermfg=202
+hi Statement        term=bold cterm=bold ctermfg=202
 hi Constant		    term=bold cterm=none ctermfg=226
+hi Boolean		    term=bold cterm=none ctermfg=1
 hi Function         term=bold cterm=bold ctermfg=105
 hi Special		    term=bold cterm=bold ctermfg=27
 hi Operator		    term=bold cterm=bold ctermfg=201
 hi PreProc          term=bold cterm=none ctermfg=201
 hi Repeat		    term=bold cterm=bold ctermfg=226
 hi Conditional	    term=bold cterm=bold ctermfg=226
-hi Identifier       term=none cterm=none ctermfg=50
+hi Identifier       term=none cterm=none ctermfg=249
 hi Comment		    ctermfg=69
 hi Number		    ctermfg=84
 hi Type		        term=none cterm=bold ctermfg=47
 hi Keyword		    term=none cterm=none ctermfg=75
-
+hi Label		    term=none cterm=bold ctermfg=190
 
 "hi Underlined   guifg=#49f95f gui=none
 "hi Error        guibg=#408452

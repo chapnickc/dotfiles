@@ -3,6 +3,7 @@
 # -------------------------------------
 alias gd='cd ~/Google\ Drive/Fall2016/'
 alias em='cd ~/Google\ Drive/MEDIC\ Lab\ Projects/Epilepsy\ Monitoring'
+alias gls='cd ~/Google\ Drive/Fall2016/LinearSystems/code/src'
 
 #git ls-files src/ tools/config/ tools/serial_read/ lib/MAX30100/ lib/TMP006/ | xargs wc -l
 

@@ -10,6 +10,8 @@ set rtp+=~/dotfiles/vim/
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 call vundle#begin()
+    "Plugin 'vim-scripts/avr.vim'
+    Plugin 'chriskempson/base16-vim'
     Plugin 'VundleVim/Vundle.vim'               " required
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'scrooloose/nerdcommenter'
@@ -17,31 +19,30 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'Yggdroot/indentLine'
     Plugin 'jpalardy/vim-slime'                 " tmux integration
-    Plugin 'ervandew/screen'                    " required for VimLab
-    Plugin 'dajero/VimLab'                      " matlab assistance
     Plugin 'hdima/python-syntax'
-    Plugin 'toyamarinyon/vim-swift'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'matze/vim-tex-fold'
     Plugin 'lervag/vimtex'
-    Plugin 'chriskempson/base16-vim'
-    Plugin 'xolox/vim-misc'
-    Plugin 'xolox/vim-notes'
+    Plugin 'tpope/vim-surround'
+    "Plugin 'ervandew/screen'                    " required for VimLab
+    "Plugin 'dajero/VimLab'                      " matlab assistance
+    "Plugin 'toyamarinyon/vim-swift'
+    "Plugin 'xolox/vim-misc'
+    "Plugin 'xolox/vim-notes'
 call vundle#end()                         
 filetype plugin indent on    " required
-
 
     
 " ---------------------------------------------
 "               General
 " ---------------------------------------------
-set term=screen-256color                 " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
+
+set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
 set t_Co=256                            " Enable 256 colors
 set encoding=utf-8 
 set termencoding=utf-8
 set fileencoding=utf-8
-
 set number                              " Show line numbers
 set backspace=indent,eol,start          " Allow backspace in insert mode
 set laststatus=2                        " Always show the status bar
@@ -59,27 +60,28 @@ set incsearch		                    " But do highlight as you type your search.
 set ignorecase		                    " Make searches case-insensitive.
 set cole=2
 set foldmethod=manual
-
-
-" --------------------------------------------------------
-"                    Indentation
-" - More info at http://www.vex.net/~x/python_and_vim.html
-" --------------------------------------------------------
-set modeline
-set smartindent
-set autoindent
-set expandtab                       " turn tabs into spaces
-set softtabstop=4                   " allow vim to see 4 spaces as a tab
-set tabstop=4                       "set tab to indent 4 spaces
-set shiftwidth=4                    "indent width for autoindent
 set cursorline                      " show a cursor line
 set ttyfast                         " Send more characters for redraws
 set mouse=a                         " Enable Mouse in all modes
+"set colorcolumn=80                 " show line past 80 cols
+
+
+" Indentation
+
+" --------------------------------------------------------
+set modeline        " enable filetype variable
+set smartindent
+set autoindent
+set expandtab       " turn tabs into spaces
+set softtabstop=4   " allow vim to see 4 spaces as a tab
+set tabstop=4       "set tab to indent 4 spaces
+set shiftwidth=4    "indent width for autoindent
 
 " --------------------------------------------------------
 "                   Key Mapping
 " --------------------------------------------------------
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
+map <F1> :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>r :source ~/.vimrc<CR>   
 nnoremap <leader>w :w<CR>                 " Type <Space>w to save file
 nnoremap <leader>q :q<CR>
@@ -99,9 +101,11 @@ map <F7> mzgg=G`z                           " Reindent the entire file
 
 
 " --------------------------------------------
-"                  Theme
+"                  Colors
 " --------------------------------------------
 au BufRead,BufNewFile *.m set filetype=matlab
+autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
+
 
 "if filereadable(expand("~/.vimrc_background"))
     "let base16colorspace=256 " Access colors present in 256 colorspace
@@ -109,8 +113,22 @@ au BufRead,BufNewFile *.m set filetype=matlab
 "endif
 "let base16colorspace=256  " Access colors present in 256 colorspace
 syntax enable 
-set background=dark
-colorscheme zeno
+
+if has('gui_running') 
+    set background=light
+    colorscheme macvim
+else 
+    set background=dark
+    colorscheme zeno
+endif 
+"highlight ColorColumn ctermbg=235
+"highlight ColorColumn ctermbg=magenta "set to whatever you like
+"call matchadd('ColorColumn', '\%81v', 100) "set column nr
+"highlight OverLength ctermbg=235 ctermfg=235
+"match OverLength /\%81v.\+/
+
+
+
 
 " --------------------------------------------
 "                  Vim-Slime
@@ -136,7 +154,7 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%c'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme = 'understated'
+let g:airline_theme =  'bubblegum'       "'kolor', 'understated'
 
 " --------------------------------------------
 "               Vim Markdown
@@ -203,7 +221,6 @@ nnoremap <leader>tc :VimtexClean<CR>
 "m = conceal math symbols
 "s = conceal superscripts/subscripts
 let g:tex_conceal= ''
-
 let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh']
 
@@ -211,5 +228,7 @@ let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh']
 "               Vim-Notes
 " ----------------------------------------
 let g:notes_directories = ['~/Google\ Drive/MEDIC\ Lab\ Projects/Epilepsy\ Monitoring/docs/']  " '~/Google\ Drive/Notes',
-
 let g:notes_suffix = '.txt'
+
+" Helpful Links
+" http://www.vex.net/~x/python_and_vim.html
