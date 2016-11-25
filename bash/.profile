@@ -40,8 +40,7 @@ export WORKON_HOME="~/.virtualenvs"
 # http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 #BASE16_SHELL=$HOME/.config/base16-shell/
 #[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-# silently set the theme for vim and iTerm2
-#theme spacemacs; clear; #materia;  #solar-flare; 
+#theme spacemacs; clear                         # silently set the theme for vim and iTerm2
 
 # simplified color names for easy access
 # http://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
@@ -61,6 +60,9 @@ springGreen='\[\e[1;38;5;48m\]'
 bldOrange='\[\e[38;5;202m\]'
 pink='\[\e[1;38;5;200m\]'
 option='⎇ ⌥ '
+
+
+# UTF-8 Characters
 arrow='➯ '
 arrow2='⇲'
 wave='⏦'
@@ -79,16 +81,14 @@ prompt_command () {
 		*) current_dir="$PWD";;
 	esac
 
-    # Get current virtual environment
-    if [[ $VIRTUAL_ENV != "" ]] 
-    then
-        # Strip out the path and just leave the env name
-        venv="${white}(${VIRTUAL_ENV##*/})"
+    # Get the name of current virtual environment  (the regex strips absolute path)
+    if [[ $VIRTUAL_ENV != "" ]]; then
+        venv="${white}(${VIRTUAL_ENV##*/})"    
     else
         venv=''
     fi
 
-    export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${sq_infin} ${end}"
+    export PS1="${venv}${bldOrange}[ ${springGreen}\u: ${royalBlue}${current_dir}${bldOrange} ]${pink}${sq_infin} ${end}"
 }
 
 PROMPT_COMMAND=prompt_command

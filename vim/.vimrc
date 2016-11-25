@@ -25,6 +25,9 @@ call vundle#begin()
     Plugin 'matze/vim-tex-fold'
     Plugin 'lervag/vimtex'
     Plugin 'tpope/vim-surround'
+    "Plugin 'vim-pandoc/vim-pandoc-syntax'
+    "Plugin 'vim-pandoc/vim-pandoc'
+    "Plugin 'vim-pandoc/vim-rmarkdown'
     "Plugin 'ervandew/screen'                    " required for VimLab
     "Plugin 'dajero/VimLab'                      " matlab assistance
     "Plugin 'toyamarinyon/vim-swift'
@@ -103,30 +106,39 @@ map <F7> mzgg=G`z                           " Reindent the entire file
 " --------------------------------------------
 "                  Colors
 " --------------------------------------------
-au BufRead,BufNewFile *.m set filetype=matlab
-autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
-
-
-"if filereadable(expand("~/.vimrc_background"))
-    "let base16colorspace=256 " Access colors present in 256 colorspace
-    "source ~/.vimrc_background
-"endif
-"let base16colorspace=256  " Access colors present in 256 colorspace
 syntax enable 
 
 if has('gui_running') 
     set background=light
-    colorscheme macvim
+    colorscheme base16-eighties
 else 
     set background=dark
     colorscheme zeno
 endif 
+
+au BufRead,BufNewFile *.m set filetype=matlab
+autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
+
+augroup python
+    autocmd!
+    autocmd FileType python 
+                \   syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Type
+augroup end
+
+autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
+function! s:def_base_syntax()
+  syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+  syntax match baseDelimiter "\."
+  hi link commonOperator Define
+  hi link baseDelimiter SpecialChar
+endfunction
+
 "highlight ColorColumn ctermbg=235
 "highlight ColorColumn ctermbg=magenta "set to whatever you like
 "call matchadd('ColorColumn', '\%81v', 100) "set column nr
 "highlight OverLength ctermbg=235 ctermfg=235
 "match OverLength /\%81v.\+/
-
 
 
 
@@ -154,7 +166,7 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%c'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme =  'bubblegum'       "'kolor', 'understated'
+let g:airline_theme =  'simple'       "'kolor', 'understated'
 
 " --------------------------------------------
 "               Vim Markdown
@@ -205,8 +217,11 @@ let g:indentLine_color_term = 238 "252 237
 let g:vimtex_latexmk_continuous=0
 let g:vimtex_latexmk_callback=0
 let g:vimtex_latexmk_build_dir = './build'
-let g:vimtex_view_general_viewer = 'open'
-let g:vimtex_view_general_options = '@pdf'
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+"let g:vimtex_view_general_viewer = 'open'
+"let g:vimtex_view_general_options = '@pdf'
 
 nnoremap <leader>c :VimtexCompileSS<CR> 
 nnoremap <leader>v :VimtexView<CR>
@@ -222,7 +237,12 @@ nnoremap <leader>tc :VimtexClean<CR>
 "s = conceal superscripts/subscripts
 let g:tex_conceal= ''
 let g:tex_fold_enable=0
-let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh']
+let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture']
+
+" ----------------------------------------
+"               Vim-Pandoc
+" ----------------------------------------
+
 
 " ----------------------------------------
 "               Vim-Notes
