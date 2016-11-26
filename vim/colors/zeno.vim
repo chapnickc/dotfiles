@@ -23,7 +23,7 @@ hi LineNr           cterm=none      ctermbg=235     ctermfg=25
 hi Define           cterm=none      ctermbg=none    ctermfg=82
 hi Directory        cterm=bold      ctermbg=235     ctermfg=152 
 hi ErrorMsg         term=standout   ctermfg=255     ctermbg=52
-hi Folded           term=standout   ctermfg=2       ctermbg=0 
+hi Folded           term=standout   ctermfg=29       ctermbg=235 
 hi IncSearch        cterm=reverse   ctermfg=58      ctermbg=187 
 hi Keyword          cterm=none      ctermbg=none    ctermfg=203
 hi MatchParen       cterm=bold      ctermbg=none    ctermfg=27
