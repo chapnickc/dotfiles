@@ -7,6 +7,8 @@ export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8                       # Prefer US English and use UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 set -o vi                                       # enable vi commands in bash 
 shopt -s checkwinsize                           # check window size after commands, update line/col values accordingly
@@ -21,8 +23,22 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+
+
 # iTerm2 Integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+test -e "${HOME}/.iterm2_shell_integration.bash" && \
+    source "${HOME}/.iterm2_shell_integration.bash"
+
+
+
+#-------    MOTD    ----------#
+#sw_vers
+
+python ~/dotfiles/init/main.py
 
 
 
