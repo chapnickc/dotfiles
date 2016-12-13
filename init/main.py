@@ -1,13 +1,7 @@
 #!/usr/bin/python
-
-"""
-
-
-"""
-
+""" """
 
 if __name__ == '__main__':
-
 
     import subprocess
     import re
@@ -38,15 +32,14 @@ if __name__ == '__main__':
         rowElements = sep.split(rowText)
         vmStats[(rowElements[0])] = int(rowElements[1].strip('\.')) * 4096
 
-    cmds = [
-            'Wired Memory:\t\t{}MB'.format(vmStats["Pages wired down"]/1024**2 ),
-            'Active Memory:\t\t{}MB'.format(vmStats["Pages active"]/1024**2 ),
-            'Inactive Memory:\t\t{}MB'.format(vmStats["Pages inactive"]/1024**2 ),
-            'Free Memory:\t\t{} MB'.format(vmStats["Pages free"]/1024**2 ),
-            'Real Mem Total (ps):\t{}MB'.format(rssTotal/1024**2),
-            'du -sh Google\ Drive/ '\
-            ]
 
+    k = 1024**2
+    stats = {'Wired Memory': vmStats['Pages wired down']/k,
+            'Active Memory': vmStats['Pages active']/k,
+            'Inactive Memory': vmStats['Pages inactive']/k,
+            'Real Memory Total': vmStats['Pages free']/k}
 
-for cmd in cmds:
-    subprocess.run(cmd, shell=True, check=True)
+    print('\n')
+    for key, val in stats.items():
+        print('{}:\t{:0.0f} MB'.format(key, val).expandtabs(10))
+    print('\n')

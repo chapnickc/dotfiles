@@ -88,3 +88,16 @@ hi Type		        term=none cterm=bold ctermfg=48
 hi Keyword		    term=none cterm=none ctermfg=75
 hi Label		    term=none cterm=bold ctermfg=190
 
+
+
+
+
+
+hi Conceal cterm=bold ctermbg=NONE ctermfg=red
+"highlight ColorColumn ctermbg=235
+"highlight ColorColumn ctermbg=magenta "set to whatever you like
+"call matchadd('ColorColumn', '\%81v', 100) "set column nr
+"highlight OverLength ctermbg=235 ctermfg=235
+"match OverLength /\%81v.\+/
+
+

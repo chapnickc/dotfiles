@@ -7,12 +7,13 @@ alias gls='cd ~/Google\ Drive/Fall2016/LinearSystems/code/src'
 
 # ----------- General --------------
 alias c='clear'
-alias reset='source ~/.profile'
+alias reset='. ~/.profile'
 alias q='exit'
 
-# ----------- Navitgation --------------
 alias ls='ls -G'
 alias l='ls'
+alias t='tree -C -L 1'
+
 alias la="ls -A"       # List including dotfiles
 alias ll="ls -1"
 alias ld="ls -d */"   # List only directories
@@ -21,27 +22,28 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# ------------------- Vim ----------------
+#   Tools
+
 alias v="vim"
 alias vi="vim"
+alias tm='tmux'
 
-#	---------------- Tmux ----------------------
-alias mux='tmux'
-alias t='tmux'
-
-
-# --------------------  GitHub  -------------------
-alias qpush='git add --all && git commit -m "-" && git push'
-alias gb="git branch"
-alias gs="git status"
-
-
-# ------------------     Python     ------------------------
+# Languages
+#   Python  
 alias python="python3"
 alias ipy='ipython'         # quicker access to ipython
 alias py='python3.5'
 
 
-# ------------------     MATLAB     ------------------------
+#   MATLAB     
 alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab -nodesktop' 
-alias t2='tree -L 2'
+
+
+
+#   GitHub 
+alias qpush='git add --all && git commit -m "-" && git push'
+alias gb="git branch"
+alias gs="git status"
+
+
+alias wimi='ipconfig getifaddr en0'
