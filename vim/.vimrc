@@ -70,27 +70,25 @@ set pumheight=20                               " Limit popup menu height
 
 
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
+nmap ; :
+nnoremap	<leader>r source ~/.vimrc<CR>   
+nmap			<leader>l :bnext<CR>                   " Move to the next buffer
+nmap			<leader>h :bprevious<CR>               " Move to the previous buffer
+map				<F1> :setlocal spell! spelllang=en_us<CR> " fix spelling
+map				<F2> mzgg=G`z                             " Reindent the entire file
 
-nnoremap <leader>r source ~/.vimrc<CR>   
-nmap <leader>l :bnext<CR>                   " Move to the next buffer
-nmap <leader>h :bprevious<CR>               " Move to the previous buffer
+xmap			<leader><tab> <Plug>SlimeRegionSend
+nmap			<leader><tab> <Plug>SlimeLineSend
+nmap			<leader>p<tab> <Plug>SlimeParagraphSend
+nmap			<leader>N     <Plug>SlimeConfig
 
+nnoremap	<leader>c		:VimtexCompileSS<CR> 
+nnoremap	<leader>v		:VimtexView<CR>
+nnoremap	<leader>tc	:VimtexClean<CR>
 
-map <F7> mzgg=G`z                             " Reindent the entire file
-map <F1> :setlocal spell! spelllang=en_us<CR> " fix spelling
-
-xmap <leader><tab> <Plug>SlimeRegionSend
-nmap <leader><tab> <Plug>SlimeLineSend
-nmap <leader>p<tab> <Plug>SlimeParagraphSend
-nmap <leader>N     <Plug>SlimeConfig
-
-nnoremap <leader>c :VimtexCompileSS<CR> 
-nnoremap <leader>v :VimtexView<CR>
-nnoremap <leader>tc :VimtexClean<CR>
-
-
-nnoremap <Leader>[ :YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
-nnoremap <Leader>] :pclose<CR>                 " non-recursively map '\+]' to close preview windows 
+nnoremap 	<Leader>[		:YcmCompleter GetDoc<CR>    " non-recursively map '\+[' to go to documentation
+nnoremap 	<Leader>]		:pclose<CR>                 " non-recursively map '\+]' to close preview windows 
+"man <something> | vim -
 
 
 
@@ -163,11 +161,11 @@ let g:vim_markdown_conceal = 0
 
 "   YouCompleteMe
 
-let g:ycm_max_diagnostics_to_display=10
-let g:ycm_server_log_level='error'
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/Users/chapnickc_slu/anaconda3/bin/python3'
+let g:ycm_max_diagnostics_to_display=30
+let g:ycm_server_log_level='warning'
 let g:ycm_always_populate_location_list = 0 "diags
-
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1

@@ -2,12 +2,12 @@
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim' 
-export TERM=xterm-256color
+#export TERM=xterm-256color
+export TERM=screen-256color
 export LANGUAGE=en_US.UTF-8
-export CLICOLOR=1
-
+export CLICOLOR="YES"
 export LSCOLORS=Exfxcxdxbxegedabagacad
-#LS_COLORS=$LS_COLORS:'di=1;4;31;42'; export LS_COLORS; l
+
 
 #http://linux-sxs.org/housekeeping/lscolors.html
 #ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
@@ -15,20 +15,13 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 #sudo chown -R "$USER":admin /usr/local
 #sudo chown -R "$USER":admin /Library/Caches/Homebrew
 
-  
-#delcare -a f=( "/usr/local/lib/libtcl8.6.dylib" '/usr/local/lib/libtk8.6.dylib' )
-
-
-#export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
-
-#VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
-
+export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
 export PYTHONIOENCODING='UTF-8'
-#export WORKON_HOME="~/.virtualenvs"
-
-#if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-	#. /usr/local/bin/virtualenvwrapper.sh
-#fi
+VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
+export WORKON_HOME="~/.virtualenvs"
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+	. /usr/local/bin/virtualenvwrapper.sh
+fi
 
 
 
