@@ -1,48 +1,50 @@
-# -------------------------------
-#            General
-# -------------------------------
+#!/bin/bash
+
 export PATH="/usr/local/bin:$PATH"
-export EDITOR='vim'                             # Make vim the default editor.
-export TERM=xterm-256color
-export LC_ALL=en_US.UTF-8                       # Prefer US English and use UTF-8
-export LANG=en_US.UTF-8
+export EDITOR='vim' 
+#export TERM=xterm-256color
+export TERM=screen-256color
 export LANGUAGE=en_US.UTF-8
+export CLICOLOR="YES"
+export LSCOLORS=Exfxcxdxbxegedabagacad
+
+
+#http://linux-sxs.org/housekeeping/lscolors.html
+#ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+# brew install coreutils
+#sudo chown -R "$USER":admin /usr/local
+#sudo chown -R "$USER":admin /Library/Caches/Homebrew
+
+export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
+export PYTHONIOENCODING='UTF-8'
+VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
+export WORKON_HOME="~/.virtualenvs"
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+	. /usr/local/bin/virtualenvwrapper.sh
+fi
+
+
 
 set -o vi                                       # enable vi commands in bash 
-shopt -s checkwinsize                           # check window size after commands, update line/col values accordingly
-shopt -s cdspell                                # Autocorrect typos in path names when using `cd`
-shopt -s extglob                                # using for rm !(filename)
+shopt -s checkwinsize   # check window size after commands, update line/col values accordingly
+shopt -s cdspell        # Autocorrect typos in path names when using `cd`
+shopt -s extglob        # using for rm !(filename)
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
 
 # iTerm2 Integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+test -e "${HOME}/.iterm2_shell_integration.bash" && \
+	source "${HOME}/.iterm2_shell_integration.bash"
 
-
-
-# -------------------------------
-#            Python
-# -------------------------------
-export PYTHONIOENCODING='UTF-8'
-export WORKON_HOME="~/.virtualenvs"
-. "/usr/local/bin/virtualenvwrapper.sh"
-
+files=( ".bash_aliases"  ".git-completion.bash"  "dotfiles/lscolor/zeno.sh" )
+for f in ${files[*]}; do  
+	if [[ -f $HOME/$f ]]; then . $HOME/$f; fi
+done
 
 # -------------------------------
 #           Themes
 # -------------------------------
 # http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
-#BASE16_SHELL=$HOME/.config/base16-shell/
-#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-# silently set the theme for vim and iTerm2
-#theme spacemacs; clear; #materia;  #solar-flare; 
-
 # simplified color names for easy access
 # http://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
 # http://ascii-table.com/ansi-escape-sequences.php
@@ -64,6 +66,9 @@ pink='\[\e[1;38;5;200m\]'
 # ➠  ⫥ ⨂ ⧕ ⧕
 arrow2='⇲' 
 option='⎇ ⌥ '
+
+
+# UTF-8 Characters
 arrow='➯ '
 wave='⏦'
 sq_infin='⋊'    #⧕
@@ -82,17 +87,15 @@ prompt_command () {
 		*) current_dir="$PWD";;
 	esac
 
-    # Get current virtual environment
-    if [[ $VIRTUAL_ENV != "" ]] 
-    then
-        # Strip out the path and just leave the env name
-        venv="${white}(${VIRTUAL_ENV##*/})"
-    else
-        venv=''
-    fi
+	# Get the name of current virtual environment  (the regex strips absolute path)
+	if [[ $VIRTUAL_ENV != "" ]]; then
+		venv="${white}(${VIRTUAL_ENV##*/})"    
+	else
+		venv=''
+	fi
 
     export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${stopper} ${end}"
+	export PS1="${venv}${bldOrange}[ ${springGreen}\u: ${royalBlue}${current_dir}${bldOrange} ]${pink}${sq_infin} ${end}"
 }
 
-PROMPT_COMMAND=prompt_command
-
+export PROMPT_COMMAND=prompt_command
