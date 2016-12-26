@@ -1,35 +1,25 @@
 #!/bin/bash
-
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim' 
-#export TERM=xterm-256color
-export TERM=screen-256color
+export TERM=screen-256color #,xterm-256color
 export LANGUAGE=en_US.UTF-8
 export CLICOLOR="YES"
 export LSCOLORS=Exfxcxdxbxegedabagacad
 
-
-#http://linux-sxs.org/housekeeping/lscolors.html
-#ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-# brew install coreutils
-#sudo chown -R "$USER":admin /usr/local
-#sudo chown -R "$USER":admin /Library/Caches/Homebrew
-
-export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
+# Python Setup
 export PYTHONIOENCODING='UTF-8'
-VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
 export WORKON_HOME="~/.virtualenvs"
+export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
+export VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-	. /usr/local/bin/virtualenvwrapper.sh
+	. "/usr/local/bin/virtualenvwrapper.sh"
 fi
-
 
 
 set -o vi                                       # enable vi commands in bash 
 shopt -s checkwinsize   # check window size after commands, update line/col values accordingly
 shopt -s cdspell        # Autocorrect typos in path names when using `cd`
 shopt -s extglob        # using for rm !(filename)
-
 
 
 # iTerm2 Integration
@@ -43,9 +33,7 @@ done
 
 # -------------------------------
 #           Themes
-# -------------------------------
 # http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
-# simplified color names for easy access
 # http://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
 # http://ascii-table.com/ansi-escape-sequences.php
 white='\[\e[37m\]'
@@ -63,18 +51,16 @@ springGreen='\[\e[1;38;5;48m\]'
 bldOrange='\[\e[38;5;202m\]'
 pink='\[\e[1;38;5;200m\]'
 
-# ➠  ⫥ ⨂ ⧕ ⧕
-arrow2='⇲' 
-option='⎇ ⌥ '
-
-
 # UTF-8 Characters
+option='⎇ ⌥ '
+arrow2='⇲' 
 arrow='➯ '
 wave='⏦'
 sq_infin='⋊'    #⧕
 sum='∑'
 end='\[\e[0m\]'                 # Text Reset
 stopper='⋊'
+# ➠  ⫥ ⨂ ⧕ ⧕
 
 
 # http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
@@ -93,9 +79,14 @@ prompt_command () {
 	else
 		venv=''
 	fi
-
-    export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${stopper} ${end}"
+  export PS1="${venv}${springGreen}[ ${bldOrange}\u: ${royalBlue}${current_dir}${springGreen} ]${pink}${stopper} ${end}"
 	export PS1="${venv}${bldOrange}[ ${springGreen}\u: ${royalBlue}${current_dir}${bldOrange} ]${pink}${sq_infin} ${end}"
 }
+PROMPT_COMMAND=prompt_command
 
-export PROMPT_COMMAND=prompt_command
+# http://linux-sxs.org/housekeeping/lscolors.html
+# ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+# brew install coreutils
+#sudo chown -R "$USER":admin /usr/local
+#sudo chown -R "$USER":admin /Library/Caches/Homebrew
+
