@@ -15,8 +15,15 @@ BASE_FLAGS = [
     '-DNDEBUG',
     '-std=c++11',
     '-xc++',
-    '-I/usr/lib/'
-    '-I/usr/include/'
+    '-I/usr/lib/',
+    '-I/usr/include/',
+    '-I/usr/include/',
+    '-I/usr/local/Cellar/avr-libc/2.0.0/avr/include/',
+    '-I/usr/local/Cellar/avr-libc/2.0.0/avr/include/avr/',
+    '-I/usr/local/Cellar/avr-libc/2.0.0/avr/include/util/',
+    '-I/usr/local/Cellar/avr-gcc/6.2.0/lib/gcc/avr/6.2.0/include/',
+    '-I/usr/local/Cellar/avr-libc/2.0.0/avr/include/sys/',
+    '-I/usr/local/lib/gcc/avr/6.2.0/include/'
 ]
 
 SOURCE_EXTENSIONS = [

@@ -26,14 +26,22 @@ call vundle#begin()
     Plugin 'matze/vim-tex-fold'
     Plugin 'lervag/vimtex'
     Plugin 'tpope/vim-surround'
+	Plugin 'ivanov/vim-ipython'
 call vundle#end()                         
 
 filetype plugin indent on						" required
+
     
-set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
-set t_Co=256                            " Enable 256 colors
+
+if !has('gui_running') 
+	set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
+	set t_Co=256                            " Enable 256 colors
+	set termencoding=utf-8
+endif
+
+
 set encoding=utf-8 
-set termencoding=utf-8
+
 set fileencoding=utf-8
 set number                              " Show line numbers
 set lazyredraw
@@ -59,9 +67,9 @@ set mouse=a															" Enable Mouse in all modes
 set modeline														" enable filetype variable
 set smartindent
 set autoindent
-set softtabstop=2												" allow vim to see spaces as a tab
-set tabstop=2														"set tab to indent 4 spaces
-set shiftwidth=2												"indent width for autoindent
+set softtabstop=4												" allow vim to see spaces as a tab
+set tabstop=4														"set tab to indent 4 spaces
+set shiftwidth=4												"indent width for autoindent
 set noshowmode                      		" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 "set colorcolumn=80                 		" show line past 80 cols
 set completeopt-=preview                       " remove documentation preview
@@ -96,7 +104,6 @@ nnoremap 	<Leader>]		:pclose<CR>                 " non-recursively map '\+]' to 
 "                  Colors
 " --------------------------------------------
 syntax enable 
-
 if has('gui_running') 
     colorscheme base16-eighties
 else 
@@ -191,3 +198,5 @@ let g:vimtex_view_general_options = '@pdf'
 let g:tex_conceal= 'g'
 let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture']
+
+source ~/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
