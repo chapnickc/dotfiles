@@ -1,0 +1,2 @@
+you can put LaTeX .sty files in /usr/local/texlive/texmf-local/tex/latex
+
