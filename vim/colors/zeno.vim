@@ -18,15 +18,15 @@ let g:colors_name="zeno"
 hi CursorIM         cterm=none      ctermfg=15      ctermbg=214
 hi Conceal         cterm=none      ctermfg=15      ctermbg=214
 hi CursorLine       cterm=NONE      ctermbg=NONE    ctermfg=NONE
-hi CursorLineNr     cterm=bold      ctermbg=236     ctermfg=202
-hi LineNr           cterm=none      ctermbg=235     ctermfg=25
+"hi CursorLineNr     cterm=bold      ctermbg=236     ctermfg=197
+hi LineNr           cterm=none      ctermbg=235     ctermfg=26
 hi Define           cterm=none      ctermbg=none    ctermfg=82
 hi Directory        cterm=bold      ctermbg=235     ctermfg=152 
 hi ErrorMsg         term=standout   ctermfg=255     ctermbg=52
-hi Folded           term=standout   ctermfg=29       ctermbg=235 
+hi Folded           term=standout   ctermfg=4      ctermbg=236
 hi IncSearch        cterm=reverse   ctermfg=58      ctermbg=187 
 hi Keyword          cterm=none      ctermbg=none    ctermfg=203
-hi MatchParen       cterm=bold      ctermbg=none    ctermfg=27
+hi MatchParen       cterm=bold      ctermbg=none    ctermfg=207
 hi MoreMsg          term=bold       cterm=bold      ctermfg=29 
 hi ModeMsg          term=bold       cterm=bold      ctermfg=38 
 hi Normal           cterm=none      ctermbg=235     ctermfg=15
@@ -42,7 +42,7 @@ hi Title            term=bold ctermfg=46
 hi VertSplit        term=reverse ctermfg=244 ctermbg=60 
 hi Visual           term=reverse ctermfg=27 ctermbg=240
 hi VisualNOS        term=bold,underline cterm=bold,underline
-hi WarningMsg       term=standout ctermbg=291ctermfg=209 
+hi WarningMsg       term=standout ctermbg=238 ctermfg=3
 hi WildMenu         term=standout ctermfg=16 ctermbg=226 
 
 hi DiffAdd        ctermfg=11 ctermbg=22
@@ -78,20 +78,15 @@ hi Conditional	    term=bold cterm=bold ctermfg=226
 hi Repeat		    term=bold cterm=bold ctermfg=226
 hi Function         term=bold cterm=bold ctermfg=75
 hi Statement        term=bold cterm=bold ctermfg=48
-hi PreProc          term=bold cterm=bold ctermfg=197
+hi PreProc          term=bold cterm=bold ctermfg=201
 hi Operator		    term=bold cterm=bold ctermfg=226
 hi Identifier       term=none cterm=none ctermfg=252
 hi Exception	    term=none cterm=bold ctermfg=226
 hi Comment		    term=none cterm=none ctermfg=247
-hi Number		    term=none cterm=none ctermfg=201
+hi Number		    term=none cterm=none ctermfg=215
 hi Type		        term=none cterm=bold ctermfg=48
 hi Keyword		    term=none cterm=none ctermfg=75
 hi Label		    term=none cterm=bold ctermfg=190
-
-
-
-
-
 
 hi Conceal cterm=bold ctermbg=NONE ctermfg=red
 "highlight ColorColumn ctermbg=235

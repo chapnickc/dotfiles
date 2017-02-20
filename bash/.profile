@@ -1,12 +1,20 @@
 #!/bin/bash
 
 export PATH="/usr/local/bin:$PATH"
+
+# added by Anaconda3 4.3.0 installer
+export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH"
+export PATH="$PATH:~/repos/MEDIC/Epilepsy-Monitor-FW/tools/arm/gcc-arm-none-eabi-4_9-2015q3/bin"
+#export PATH="~/anaconda/envs/python3/bin:$PATH"
+
 export EDITOR='vim' 
 #export TERM=xterm-256color
 export TERM=screen-256color
 export LANGUAGE=en_US.UTF-8
 export CLICOLOR="YES"
 export LSCOLORS=Exfxcxdxbxegedabagacad
+
+export GITURL="https://github.com/chapnickc"
 
 
 #http://linux-sxs.org/housekeeping/lscolors.html
@@ -15,6 +23,11 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 #sudo chown -R "$USER":admin /usr/local
 #sudo chown -R "$USER":admin /Library/Caches/Homebrew
 
+
+# setup for nrf52 development using GCC ARM 
+
+export PATH="$HOME/repos/LifeBud-Firmware/tools/nRF5x-Command-Line-Tools_9_2_1_OSX/nrfjprog:$PATH"
+
 export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH" # Anaconda3 4.2.0 (installer)
 export PYTHONIOENCODING='UTF-8'
 VIRTUALENVWRAPPER_PYTHON="/Users/chapnickc_slu/anaconda3/bin/python"
@@ -22,6 +35,8 @@ export WORKON_HOME="~/.virtualenvs"
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
 	. /usr/local/bin/virtualenvwrapper.sh
 fi
+
+if [ -f "$HOME/.arduinomkrc" ]; then . $HOME/.arduinomkrc; fi
 
 
 
@@ -95,3 +110,5 @@ prompt_command () {
 }
 
 PROMPT_COMMAND=prompt_command
+#ssh pi@10.178.32.43
+#source activate py36

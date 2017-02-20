@@ -11,37 +11,34 @@ set rtp+=~/dotfiles/vim/
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 call vundle#begin()
-    "Plugin 'vim-scripts/avr.vim'
-    Plugin 'chriskempson/base16-vim'
-    Plugin 'VundleVim/Vundle.vim'               " required
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'jpalardy/vim-slime'                 " tmux integration
-    Plugin 'hdima/python-syntax'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'matze/vim-tex-fold'
-    Plugin 'lervag/vimtex'
-    Plugin 'tpope/vim-surround'
-	Plugin 'ivanov/vim-ipython'
+   "Plugin 'vim-scripts/avr.vim'
+   Plugin 'chriskempson/base16-vim'
+   Plugin 'VundleVim/Vundle.vim'               " required
+   Plugin 'Valloric/YouCompleteMe'
+   Plugin 'scrooloose/nerdcommenter'
+   Plugin 'vim-airline/vim-airline'
+   Plugin 'vim-airline/vim-airline-themes'
+   Plugin 'Yggdroot/indentLine'
+   Plugin 'jpalardy/vim-slime'                 " tmux integration
+   Plugin 'hdima/python-syntax'
+   Plugin 'plasticboy/vim-markdown'
+   Plugin 'octol/vim-cpp-enhanced-highlight'
+   Plugin 'matze/vim-tex-fold'
+   Plugin 'lervag/vimtex'
+   Plugin 'tpope/vim-surround'
+   Plugin 'jalcine/cmake.vim'
+   Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+   Plugin 'keith/swift.vim'
 call vundle#end()                         
 
 filetype plugin indent on						" required
-
-    
-
-if !has('gui_running') 
-	set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
-	set t_Co=256                            " Enable 256 colors
-	set termencoding=utf-8
-endif
+source ~/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
 
 
+set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
+set t_Co=256                            " Enable 256 colors
+set termencoding=utf-8
 set encoding=utf-8 
-
 set fileencoding=utf-8
 set number                              " Show line numbers
 set lazyredraw
@@ -65,15 +62,20 @@ set nocursorline												" dont show a cursor line
 set ttyfast															" Send more characters for redraws
 set mouse=a															" Enable Mouse in all modes
 set modeline														" enable filetype variable
-set smartindent
 set autoindent
+set smartindent
 set softtabstop=4												" allow vim to see spaces as a tab
 set tabstop=4														"set tab to indent 4 spaces
 set shiftwidth=4												"indent width for autoindent
+set expandtab
 set noshowmode                      		" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 "set colorcolumn=80                 		" show line past 80 cols
 set completeopt-=preview                       " remove documentation preview
 set pumheight=20                               " Limit popup menu height
+
+if has("gui_macvim")
+    set guifont=Hack\ Regular:h13
+endif
 
 
 
@@ -105,41 +107,47 @@ nnoremap 	<Leader>]		:pclose<CR>                 " non-recursively map '\+]' to 
 " --------------------------------------------
 syntax enable 
 if has('gui_running') 
-    colorscheme base16-eighties
+   colorscheme darkZ
 else 
-    set background=dark
-    colorscheme zeno
+   set background=dark
+   colorscheme zeno
 endif 
 
 " disable bell
 autocmd! GUIEnter * set vb t_vb=    
+autocmd BufRead,BufNewFile *.py :set softtabstop=4 tabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.cpp :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile *.h :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 au BufRead,BufNewFile *.m set filetype=matlab
-autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
+"autocmd BufRead,BufNewFile *.asm :set syntax=avr8bit
+
+
 
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
-  syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-  syntax match baseDelimiter "\."
-  hi link commonOperator Define
-  hi link baseDelimiter SpecialChar
+   syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+   syntax match baseDelimiter "\.\|&"
+   hi link commonOperator Define
+   hi link baseDelimiter SpecialChar
 endfunction
 
 
 augroup python
-	autocmd!
-	autocmd FileType python 
-				\ syn keyword pythonSelf self
-				\ | highlight def link pythonSelf Type
+   autocmd!
+   autocmd FileType python 
+            \ syn keyword pythonSelf self
+            \ | highlight def link pythonSelf Type
 augroup end
 
 
 "		Vim-Slime
 let g:slime_target = "tmux"
-let g:slime_paste_file = "~/.slime_paste"
+let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
+let g:slime_dont_ask_default = 1
+let g:slime_preserve_curpos = 0
 
 
 "   Vim-Airline (Powerline)
@@ -147,7 +155,7 @@ let g:airline_powerline_fonts = 1                  " Allows for special symbols
 let g:airline_section_z = '%c'                      " Make the right side empty
 let g:airline#extensions#tabline#enabled = 1       " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'   " Show just the filename
-let g:airline_theme =  'simple'       "'kolor', 'understated'
+let g:airline_theme =  'ravenpower'       "'kolor', 'understated'
 
 
 "   indentLine
@@ -168,16 +176,19 @@ let g:vim_markdown_conceal = 0
 
 "   YouCompleteMe
 
-let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = '/Users/chapnickc_slu/anaconda3/bin/python3'
-let g:ycm_max_diagnostics_to_display=30
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = 'python'
 let g:ycm_server_log_level='warning'
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_max_diagnostics_to_display=30
 let g:ycm_always_populate_location_list = 0 "diags
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_min_num_identifier_candidate_chars = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
+let g:ycm_show_diagnostics_ui = 0
 
 
 
@@ -197,6 +208,6 @@ let g:vimtex_view_general_options = '@pdf'
 " ------------------------------------------------
 let g:tex_conceal= 'g'
 let g:tex_fold_enable=0
-let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture']
+let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture', 'question']
 
-source ~/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
+
