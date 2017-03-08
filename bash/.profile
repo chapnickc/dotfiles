@@ -40,10 +40,11 @@ if [ -f "$HOME/.arduinomkrc" ]; then . $HOME/.arduinomkrc; fi
 
 
 
-set -o vi                                       # enable vi commands in bash 
-shopt -s checkwinsize   # check window size after commands, update line/col values accordingly
-shopt -s cdspell        # Autocorrect typos in path names when using `cd`
-shopt -s extglob        # using for rm !(filename)
+#set -o vi                                       # enable vi commands in bash 
+bindkey -v
+#shopt -s checkwinsize   # check window size after commands, update line/col values accordingly
+#shopt -s cdspell        # Autocorrect typos in path names when using `cd`
+#shopt -s extglob        # using for rm !(filename)
 
 
 
@@ -53,7 +54,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && \
 
 files=( ".bash_aliases"  ".git-completion.bash"  "dotfiles/lscolor/zeno.sh" )
 for f in ${files[*]}; do  
-	if [[ -f $HOME/$f ]]; then . $HOME/$f; fi
+	if [[ -e $HOME/$f ]]; then . $HOME/$f; fi
 done
 
 # -------------------------------
@@ -112,3 +113,5 @@ prompt_command () {
 PROMPT_COMMAND=prompt_command
 #ssh pi@10.178.32.43
 #source activate py36
+
+if [[ -e ~/.rpirc ]]; then source ~/.rpirc; fi

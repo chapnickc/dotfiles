@@ -11,28 +11,29 @@ set rtp+=~/dotfiles/vim/
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 call vundle#begin()
-   "Plugin 'vim-scripts/avr.vim'
-   Plugin 'chriskempson/base16-vim'
-   Plugin 'VundleVim/Vundle.vim'               " required
-   Plugin 'Valloric/YouCompleteMe'
-   Plugin 'scrooloose/nerdcommenter'
-   Plugin 'vim-airline/vim-airline'
-   Plugin 'vim-airline/vim-airline-themes'
-   Plugin 'Yggdroot/indentLine'
-   Plugin 'jpalardy/vim-slime'                 " tmux integration
-   Plugin 'hdima/python-syntax'
-   Plugin 'plasticboy/vim-markdown'
-   Plugin 'octol/vim-cpp-enhanced-highlight'
-   Plugin 'matze/vim-tex-fold'
-   Plugin 'lervag/vimtex'
-   Plugin 'tpope/vim-surround'
-   Plugin 'jalcine/cmake.vim'
-   Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-   Plugin 'keith/swift.vim'
+"Plugin 'vim-scripts/avr.vim'
+    Plugin 'chriskempson/base16-vim'
+    Plugin 'VundleVim/Vundle.vim'               " required
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'jpalardy/vim-slime'                 " tmux integration
+    Plugin 'hdima/python-syntax'
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'matze/vim-tex-fold'
+    Plugin 'lervag/vimtex'
+    Plugin 'tpope/vim-surround'
+    Plugin 'jalcine/cmake.vim'
+    Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    Plugin 'keith/swift.vim'
+    Plugin 'suan/vim-instant-markdown'
 call vundle#end()                         
 
 filetype plugin indent on						" required
-source ~/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
+"source ~/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim
 
 
 set term=screen-256color                " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
@@ -102,15 +103,16 @@ nnoremap 	<Leader>]		:pclose<CR>                 " non-recursively map '\+]' to 
 
 
 
+
 " --------------------------------------------
 "                  Colors
 " --------------------------------------------
 syntax enable 
 if has('gui_running') 
-   colorscheme darkZ
+    colorscheme darkZ
 else 
-   set background=dark
-   colorscheme zeno
+    set background=dark
+    colorscheme zeno
 endif 
 
 " disable bell
@@ -126,18 +128,18 @@ au BufRead,BufNewFile *.m set filetype=matlab
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
-   syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-   syntax match baseDelimiter "\.\|&"
-   hi link commonOperator Define
-   hi link baseDelimiter SpecialChar
+    syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+    syntax match baseDelimiter "\.\|&"
+    hi link commonOperator Define
+    hi link baseDelimiter SpecialChar
 endfunction
 
 
 augroup python
-   autocmd!
-   autocmd FileType python 
-            \ syn keyword pythonSelf self
-            \ | highlight def link pythonSelf Type
+    autocmd!
+    autocmd FileType python 
+                \ syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Type
 augroup end
 
 
@@ -175,21 +177,23 @@ let g:vim_markdown_conceal = 0
 
 
 "   YouCompleteMe
-
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'python'
-let g:ycm_server_log_level='warning'
+let g:ycm_server_log_level='debug'
 let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_max_diagnostics_to_display=30
-let g:ycm_always_populate_location_list = 0 "diags
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_min_num_identifier_candidate_chars = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_show_diagnostics_ui = 0
 
+
+
+"let g:ycm_max_diagnostics_to_display=30
+"let g:ycm_always_populate_location_list = 0 "diags
 
 
 "   VimTeX
@@ -209,5 +213,8 @@ let g:vimtex_view_general_options = '@pdf'
 let g:tex_conceal= 'g'
 let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture', 'question']
+
+" Instant Markdown Preview
+let g:instant_markdown_autostart = 0
 
 
