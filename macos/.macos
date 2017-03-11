@@ -1,2 +1,4 @@
 defaults write com.apple.dock autohide-time-modifier -int 0; # killall Dock
 defaults write -g com.apple.mouse.scaling 5.0
+defaults write NSGlobalDomain InitialKeyRepeat -int 17
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
