@@ -21,9 +21,12 @@ alias la="ls -A"       # List including dotfiles
 alias ll="ls -1"
 alias ld="ls -d */"   # List only directories
 
+alias t='tree'
 alias tt='tree -L 2'
 alias ta='tree  -L 3'
-alias t='tree -C -L 1'
+alias lt='tree -C -L 1'
+
+
 
 #   Tools
 alias vim="mvim -v"

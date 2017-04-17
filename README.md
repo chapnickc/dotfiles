@@ -1,36 +1,26 @@
-# the dotfiles
+# dotfiles
 
+Using the right tools can have a significant 
+impact on your productivity. 
 
-
-# Motivation
-
-Having the right tools can have a significant 
-impact on your productivity, particularly for developers. This setup is a means with which to maintain the quality of your tools
-by saving your configuration files.
-
-Feel free to use anything you see here!
 
 ## Initialize a Repository
 
 To begin with, make a directory to store all of your dot files. 
 
 ```bash
-
 mkdir ~/.dotfiles
 cd ~/.dotfiles
 git init
-
 ```
-
-
-
 
 
 You will also want to create symbolic links so that your
 machine will know where to look for the files it's expecting
 
-<code>ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc</code>
-
+```bash
+ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
+```
 
 
 
@@ -82,7 +72,7 @@ machine will know where to look for the files it's expecting
     cd ~/.vim
 
     git init
-    git remote add -f origin https://github.com/chapnickc/.dotfiles/
+    git remote add -f origin https://github.com/chapnickc/dotfiles/
 
     git config core.sparseCheckout true
     echo "vim" >> .git/info/sparse-checkout 
@@ -92,8 +82,8 @@ machine will know where to look for the files it's expecting
     git submodule init
     git submodule update
 
-    # Create a symbolic link
-    ln -s ~/<repo>/vim/.vimrc ~/.vimrc
+    # Create a symbolic link to system vim configuration file
+    ln -s ./dotfiles/vim/.vimrc ~/.vimrc
     ```
 
 For more information on sparse checkout:
@@ -111,7 +101,9 @@ your .vimrc file so that [Pathogen](https://github.com/tpope/vim-pathogen)
 can load the appropriate modules.
 
 
-<code>set rtp+=~/.dotfiles/vim</code>
+```bash
+set rtp+=~/.dotfiles/vim
+```
 
 
 # IPython

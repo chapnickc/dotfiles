@@ -115,3 +115,5 @@ PROMPT_COMMAND=prompt_command
 #source activate py36
 
 if [[ -e ~/.rpirc ]]; then source ~/.rpirc; fi
+export PYTHONPATH=$PYTHONPATH:$PWD
+export PYTHONPATH=$PYTHONPATH:$PWD
