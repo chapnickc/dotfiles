@@ -16,6 +16,7 @@ let g:colors_name="zeno2"
 " terminal colors
 
 hi Normal           cterm=none      ctermbg=235     ctermfg=254
+hi NonText          cterm=bold      ctermbg=235     ctermfg=51
 
 hi CursorIM         cterm=none      ctermfg=15      ctermbg=214
 hi Conceal         cterm=none      ctermfg=15      ctermbg=214
@@ -30,7 +31,7 @@ hi MatchParen       cterm=bold      ctermbg=none    ctermfg=75
 hi MoreMsg          term=bold       cterm=bold      ctermfg=29 
 hi ModeMsg          term=bold       cterm=bold      ctermfg=38 
 
-hi NonText          cterm=bold      ctermbg=235     ctermfg=226  
+
 hi Pmenu            cterm=none      ctermbg=237     ctermfg=45
 hi PmenuSel         cterm=none      ctermbg=244     ctermfg=10
 hi Question         term=standout   cterm=bold      ctermfg=146 
@@ -71,11 +72,11 @@ hi Statement      term=bold cterm=bold ctermfg=41
 hi Type		        term=none cterm=bold ctermfg=41
 
 hi Function       term=bold cterm=bold ctermfg=39
-hi Repeat		      term=bold cterm=bold ctermfg=227
-hi Operator		    term=bold cterm=bold ctermfg=227
-hi Conditional	  term=bold cterm=bold ctermfg=227
-hi Special		    term=bold cterm=bold ctermfg=227
-hi Exception	    term=none cterm=bold ctermfg=227
+hi Repeat		      term=bold cterm=bold ctermfg=190
+hi Operator		    term=bold cterm=bold ctermfg=190
+hi Conditional	  term=bold cterm=bold ctermfg=190
+hi Special		    term=bold cterm=bold ctermfg=190
+hi Exception	    term=none cterm=bold ctermfg=190
 
 hi Comment		    term=none cterm=none ctermfg=31
 

@@ -62,3 +62,6 @@ alias sact='source activate'
 alias bycache="if [ -e ./__pycache__ ]; then rm -rf ./__pycache__; fi"
 #alias rm='mv trash'
 
+alias wd='cd /Users/chapnickc_slu/ML/models/tutorials/rnn/translate'
+
+
