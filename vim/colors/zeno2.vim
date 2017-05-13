@@ -13,13 +13,16 @@ endif
 
 let g:colors_name="zeno2"
 
+highlight htmlBold cterm=bold ctermfg=1
+highlight htmlItalic cterm=italic ctermfg=1
+
 " terminal colors
 
 hi Normal           cterm=none      ctermbg=235     ctermfg=254
 hi NonText          cterm=bold      ctermbg=235     ctermfg=51
 
 hi CursorIM         cterm=none      ctermfg=15      ctermbg=214
-hi Conceal         cterm=none      ctermfg=15      ctermbg=214
+hi Conceal          cterm=none      ctermfg=15      ctermbg=7
 hi CursorLine       cterm=NONE      ctermbg=NONE    ctermfg=NONE
 hi Define           cterm=none      ctermbg=none    ctermfg=10
 hi Directory        cterm=bold      ctermbg=235     ctermfg=152 
