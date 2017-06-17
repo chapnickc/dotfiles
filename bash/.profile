@@ -117,3 +117,9 @@ PROMPT_COMMAND=prompt_command
 if [[ -e ~/.rpirc ]]; then source ~/.rpirc; fi
 export PYTHONPATH=$PYTHONPATH:$PWD
 export PYTHONPATH=$PYTHONPATH:$PWD
+
+#
+export FLASK_APP=/Users/chapnickc_slu/chadchapnick.xyz/autoapp.py
+export FLASK_DEBUG=1
+
+#foreground: #8ae234

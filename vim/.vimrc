@@ -25,6 +25,8 @@ call vundle#begin()
     Plugin 'Yggdroot/indentLine'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'qualiabyte/vim-colorstepper'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -104,7 +106,7 @@ augroup end
 
 autocmd BufRead,BufNewFile *.cpp :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 autocmd BufRead,BufNewFile *.h :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.html :set foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2 expandtab 
+autocmd BufRead,BufNewFile *.html :set foldmethod=manual softtabstop=2 tabstop=2 shiftwidth=2 expandtab 
 au BufRead,BufNewFile *.m set filetype=matlab
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
