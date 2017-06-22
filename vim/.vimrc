@@ -105,6 +105,7 @@ augroup python
 augroup end
 
 autocmd BufRead,BufNewFile *.cpp :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile *.sh :let g:is_bash=1 | set filetype=sh
 autocmd BufRead,BufNewFile *.h :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 autocmd BufRead,BufNewFile *.html :set foldmethod=manual softtabstop=2 tabstop=2 shiftwidth=2 expandtab 
 au BufRead,BufNewFile *.m set filetype=matlab

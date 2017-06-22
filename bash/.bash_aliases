@@ -48,3 +48,4 @@ alias wimi='ipconfig getifaddr en0'
 alias deac='source deactivate';
 alias sact='source activate'
 alias dynamodb-local='java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib -jar ~/dynamodb_local_latest/DynamoDBLocal.jar -sharedDb'
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'

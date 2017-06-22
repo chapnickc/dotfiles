@@ -4,6 +4,7 @@ export PATH="/usr/local/bin:$PATH"
 
 # added by Anaconda3 4.3.0 installer
 export PATH="/Users/chapnickc_slu/anaconda3/bin:$PATH"
+export PATH="$PATH:/Users/chapnickc_slu/node_modules/chromedriver/lib/chromedriver"
 export PATH="$PATH:~/repos/MEDIC/Epilepsy-Monitor-FW/tools/arm/gcc-arm-none-eabi-4_9-2015q3/bin"
 #export PATH="~/anaconda/envs/python3/bin:$PATH"
 
@@ -123,3 +124,4 @@ export FLASK_APP=/Users/chapnickc_slu/chadchapnick.xyz/autoapp.py
 export FLASK_DEBUG=1
 
 #foreground: #8ae234
+
