@@ -5,10 +5,13 @@ set nocompatible              " be iMproved, required for vundle
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/
 
+
 "   VUNDLE
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 call vundle#begin()
+    Plugin 'chrisbra/Colorizer'
+    Plugin 'flazz/vim-colorschemes'
     Plugin 'VundleVim/Vundle.vim'       " required
     Plugin 'jpalardy/vim-slime'         " tmux integration
     Plugin 'scrooloose/nerdcommenter'
@@ -89,7 +92,7 @@ if has('gui_running')
     colorscheme darkZ
 else 
     set background=dark
-    colorscheme zeno2
+    colorscheme zift
 endif 
 
 " disable bell
@@ -115,6 +118,8 @@ function! s:def_base_syntax()
     "\|\[\|\]\
     syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
     syntax match baseDelimiter "\(\.\|&\|}\|{\)"
+    syntax match curlyBraces "\(\}\|{\)"
+    hi curlyBraces ctermfg=245
     hi link commonOperator SpecialKey
     hi link baseDelimiter SpecialChar
 endfunction

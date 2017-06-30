@@ -124,4 +124,4 @@ export FLASK_APP=/Users/chapnickc_slu/chadchapnick.xyz/autoapp.py
 export FLASK_DEBUG=1
 
 #foreground: #8ae234
-
+source $HOME/anaconda3/bin/aws_zsh_completer.sh
