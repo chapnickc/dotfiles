@@ -10,26 +10,26 @@ set rtp+=~/dotfiles/vim/
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 call vundle#begin()
-    Plugin 'chrisbra/Colorizer'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'VundleVim/Vundle.vim'       " required
-    Plugin 'jpalardy/vim-slime'         " tmux integration
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'tpope/vim-surround'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-    Plugin 'hdima/python-syntax'
-    Plugin 'lepture/vim-jinja'
-    Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'suan/vim-instant-markdown'
-    Plugin 'lervag/vimtex'
-    Plugin 'matze/vim-tex-fold'
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'qualiabyte/vim-colorstepper'
+  Plugin 'alvan/vim-closetag'
+  Plugin 'chrisbra/Colorizer'
+  Plugin 'flazz/vim-colorschemes'
+  Plugin 'VundleVim/Vundle.vim'       " required
+  Plugin 'jpalardy/vim-slime'         " tmux integration
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'tpope/vim-surround'
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+  Plugin 'hdima/python-syntax'
+  Plugin 'lepture/vim-jinja'
+  Plugin 'octol/vim-cpp-enhanced-highlight'
+  Plugin 'plasticboy/vim-markdown'
+  Plugin 'suan/vim-instant-markdown'
+  Plugin 'lervag/vimtex'
+  Plugin 'matze/vim-tex-fold'
+  Plugin 'Yggdroot/indentLine'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'pangloss/vim-javascript'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -110,7 +110,7 @@ augroup end
 autocmd BufRead,BufNewFile *.cpp :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 autocmd BufRead,BufNewFile *.sh :let g:is_bash=1 | set filetype=sh
 autocmd BufRead,BufNewFile *.h :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.html :set foldmethod=manual softtabstop=2 tabstop=2 shiftwidth=2 expandtab 
+autocmd BufRead,BufNewFile *.html :set foldmethod=manual softtabstop=2 tabstop=2 shiftwidth=2 expandtab foldmethod=indent
 au BufRead,BufNewFile *.m set filetype=matlab
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
@@ -174,7 +174,7 @@ nnoremap 	<Leader>[	:YcmCompleter GetDoc<CR>
 nnoremap 	<Leader>]	:pclose<CR>                 
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_server_log_level='debug'
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_server_use_vim_stdout = 0
