@@ -30,6 +30,7 @@ call vundle#begin()
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'pangloss/vim-javascript'
+  Plugin 'nvie/vim-flake8'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -55,7 +56,7 @@ set nohlsearch	                        " Don't continue to highlight searched ph
 set incsearch							" But do highlight as you type your search.
 set ignorecase					        " Make searches case-insensitive.
 set cole=2
-set foldmethod=manual
+set foldmethod=indent
 set nocursorline						" dont show a cursor line
 set ttyfast								" Send more characters for redraws
 set mouse=a								" Enable Mouse in all modes
@@ -117,9 +118,9 @@ autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
     "\|\[\|\]\
     syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-    syntax match baseDelimiter "\(\.\|&\|}\|{\)"
-    syntax match curlyBraces "\(\}\|{\)"
-    hi curlyBraces ctermfg=245
+    syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
+    syntax match curlyBraces "\(\}\|{\|_\)"
+    hi curlyBraces ctermfg=43
     hi link commonOperator SpecialKey
     hi link baseDelimiter SpecialChar
 endfunction

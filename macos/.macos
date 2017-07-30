@@ -1,5 +1,18 @@
-defaults write com.apple.dock autohide-time-modifier -int 0; # killall Dock
-defaults write -g com.apple.mouse.scaling 5.0
+
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
-defaults write NSGlobalDomain KeyRepeat -int 0
+
+
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+defaults write com.apple.dock autohide-time-modifier -int 0; 
