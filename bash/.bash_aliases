@@ -48,3 +48,6 @@ alias sact='source activate'
 alias dynamodb-local='java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib -jar ~/dynamodb_local_latest/DynamoDBLocal.jar -sharedDb'
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
+alias pup='pip install . --upgrade'
+alias activate='source env/bin/activate'
+alias idtoken="cat ~/.nexus/tokens | head -n 1 | cut -f 2 -d '='"

@@ -4,13 +4,13 @@ set nocompatible              " be iMproved, required for vundle
 " http://www.vex.net/~x/python_and_vim.html
 " set the runtime path to include Vundle and initialize
 set rtp+=~/dotfiles/vim/
-
-
-"   VUNDLE
-set rtp+=~/.vim/bundle/Vundle.vim
-filetype off                  " required
-call vundle#begin()
-  Plugin 'alvan/vim-closetag'
+set noeb vb t_vb=
+ 
+ "   VUNDLE
+ set rtp+=~/.vim/bundle/Vundle.vim
+ filetype off                  " required
+ call vundle#begin()
+   Plugin 'alvan/vim-closetag'
   Plugin 'chrisbra/Colorizer'
   Plugin 'flazz/vim-colorschemes'
   Plugin 'VundleVim/Vundle.vim'       " required
@@ -30,7 +30,9 @@ call vundle#begin()
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'pangloss/vim-javascript'
-  Plugin 'nvie/vim-flake8'
+  "Plugin 'nvie/vim-flake8'
+  Plugin  'rafi/awesome-vim-colorschemes'
+  Plugin 'qualiabyte/vim-colorstepper'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -93,26 +95,36 @@ if has('gui_running')
     colorscheme darkZ
 else 
     set background=dark
-    colorscheme zift
+    colorscheme zeno2
+    "colorscheme DarkDefault
 endif 
 
 " disable bell
 autocmd! GUIEnter * set vb t_vb=     
 
 " specific language settings
-autocmd BufRead,BufNewFile *.py :set softtabstop=4 tabstop=4 shiftwidth=4 
+ 
+" filenames 
+autocmd BufRead,BufNewFile *.py 
+            \ set softtabstop=4 tabstop=4 shiftwidth=4 
+autocmd BufRead,BufNewFile *.cpp 
+            \ set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.sh          
+            \ let g:is_bash=1 | set filetype=sh
+autocmd BufRead,BufNewFile *.h          
+            \ set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile *.html        
+            \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.m           
+            \ set filetype=matlab
+
+
 augroup python
     autocmd!
     autocmd FileType python 
                 \ syn keyword pythonSelf self
                 \ | highlight def link pythonSelf Type
 augroup end
-
-autocmd BufRead,BufNewFile *.cpp :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.sh :let g:is_bash=1 | set filetype=sh
-autocmd BufRead,BufNewFile *.h :set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.html :set foldmethod=manual softtabstop=2 tabstop=2 shiftwidth=2 expandtab foldmethod=indent
-au BufRead,BufNewFile *.m set filetype=matlab
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()

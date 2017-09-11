@@ -5,7 +5,7 @@ bindkey -v              # enable vi commands in bash
 export CLICOLOR="YES"
 export EDITOR='vim' 
 export LANGUAGE=en_US.UTF-8
-export LSCOLORS=Exfxcxdxbxegedabagacad
+#export LSCOLORS=Exfxcxdxbxegedabagacad
 #export TERM=screen-256color # xterm-256color
 
 export PATH="/usr/local/bin:$PATH"
