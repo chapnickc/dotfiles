@@ -16,9 +16,9 @@ export PATH="$PATH:/Users/chapnickc_slu/node_modules/chromedriver/lib/chromedriv
 
 
 files=( ".bash_aliases"  ".git-completion.bash"  "dotfiles/lscolor/zeno.sh" )
-for f in ${files[*]}; do  
-	if [[ -e "$HOME"/"$f" ]]; then 
-        source "$HOME"/"$f"
+for file in ${files[*]}; do  
+	if [[ -e "$HOME"/"$file" ]]; then 
+        source "$HOME"/"$file"
     fi
 done
 

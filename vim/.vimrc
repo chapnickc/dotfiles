@@ -6,33 +6,32 @@ set nocompatible              " be iMproved, required for vundle
 set rtp+=~/dotfiles/vim/
 set noeb vb t_vb=
  
- "   VUNDLE
- set rtp+=~/.vim/bundle/Vundle.vim
- filetype off                  " required
- call vundle#begin()
-   Plugin 'alvan/vim-closetag'
-  Plugin 'chrisbra/Colorizer'
-  Plugin 'flazz/vim-colorschemes'
-  Plugin 'VundleVim/Vundle.vim'       " required
-  Plugin 'jpalardy/vim-slime'         " tmux integration
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'tpope/vim-surround'
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-  Plugin 'hdima/python-syntax'
-  Plugin 'lepture/vim-jinja'
-  Plugin 'octol/vim-cpp-enhanced-highlight'
-  Plugin 'plasticboy/vim-markdown'
-  Plugin 'suan/vim-instant-markdown'
-  Plugin 'lervag/vimtex'
-  Plugin 'matze/vim-tex-fold'
-  Plugin 'Yggdroot/indentLine'
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'pangloss/vim-javascript'
-  "Plugin 'nvie/vim-flake8'
-  Plugin  'rafi/awesome-vim-colorschemes'
-  Plugin 'qualiabyte/vim-colorstepper'
+"   VUNDLE
+set rtp+=~/.vim/bundle/Vundle.vim
+filetype off                  " required
+call vundle#begin()
+    Plugin 'alvan/vim-closetag'
+    Plugin 'chrisbra/Colorizer'
+    Plugin 'VundleVim/Vundle.vim'       " required
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'jpalardy/vim-slime'         " tmux integration
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'tpope/vim-surround'
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    Plugin 'hdima/python-syntax'
+    Plugin 'lepture/vim-jinja'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'suan/vim-instant-markdown'
+    Plugin 'lervag/vimtex'
+    Plugin 'matze/vim-tex-fold'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'nvie/vim-flake8'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'Rykka/riv.vim'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -47,7 +46,7 @@ set backspace=indent,eol,start          " Allow backspace in insert mode
 set laststatus=2                        " Always show the status bar
 set autoread                            " Reload files changed outside vim
 set hidden                              " allows buffers to be hidden if they are modified
-set pastetoggle=<c-a>                   " Paste without being smart
+set pastetoggle=<c-a>                   " Paste without auto indent 
 set nowrap                              " Don't wrap lines
 set clipboard=unnamed                   " Use the system clipboard
 set ruler                               " Cursor position
@@ -66,9 +65,9 @@ set modeline							" enable filetype variable
 set autoindent
 set smartindent
 set softtabstop=4						" allow vim to see spaces as a tab
-set tabstop=4							" set tab to indent 4 spaces
-set shiftwidth=4						"indent width for autoindent
-set expandtab
+set tabstop=4							" show existing tabs using 4 spaces
+set shiftwidth=4						" indent width for '>'
+set expandtab                           " on pressing tab insert 4 spaces
 set noshowmode                      	" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set completeopt-=preview                " remove documentation preview
 set pumheight=20                        " Limit popup menu height
@@ -84,6 +83,8 @@ nmap	    <leader>h :bprevious<CR>               " Move to the previous buffer
 map			<F1> :setlocal spell! spelllang=en_us<CR> " fix spelling
 map			<F2> mzgg=G`z                             " Reindent the entire file
 
+map <leader>t :NERDTreeToggle<CR>
+
 
 "   Colors
 syntax enable 
@@ -95,7 +96,8 @@ if has('gui_running')
     colorscheme darkZ
 else 
     set background=dark
-    colorscheme zeno2
+    colorscheme genio
+    "colorscheme zeno2
     "colorscheme DarkDefault
 endif 
 
@@ -117,6 +119,13 @@ autocmd BufRead,BufNewFile *.html
             \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.m           
             \ set filetype=matlab
+autocmd BufRead,BufNewFile *.json
+            \ set conceallevel=0
+autocmd BufRead,BufNewFile *.ino
+            \ set softtabstop=2 tabstop=2 shiftwidth=2
+
+
+
 
 
 augroup python
@@ -187,7 +196,7 @@ nnoremap 	<Leader>[	:YcmCompleter GetDoc<CR>
 nnoremap 	<Leader>]	:pclose<CR>                 
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
+"let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_server_log_level='debug'
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_server_use_vim_stdout = 0
