@@ -30,7 +30,7 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'pangloss/vim-javascript'
     Plugin 'nvie/vim-flake8'
-    Plugin 'scrooloose/nerdtree'
+    "Plugin 'scrooloose/nerdtree'
     Plugin 'Rykka/riv.vim'
 call vundle#end()                         
 filetype plugin indent on						" required
@@ -97,7 +97,6 @@ if has('gui_running')
 else 
     set background=dark
     colorscheme genio
-    "colorscheme zeno2
     "colorscheme DarkDefault
 endif 
 

@@ -1,7 +1,6 @@
 # dotfiles
 
-Using the right tools can have a significant 
-impact on your productivity. 
+Using the right tools can have a significant impact on your productivity. 
 
 
 ## Initialize a Repository
@@ -15,8 +14,8 @@ git init
 ```
 
 
-You will also want to create symbolic links so that your
-machine will know where to look for the files it's expecting
+You will also want to create symbolic links so that your machine 
+will know where to look for the files it's expecting
 
 ```bash
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
@@ -91,19 +90,17 @@ For more information on sparse checkout:
 + [Blog entry by Jason Karns](http://jasonkarns.com/blog/subdirectory-checkouts-with-git-sparse-checkout/)
 
 
-# Extension-Specific Comments
 
 # Vim 
 
-In regards to vim, you will need to add your git repository to the 
-'runtimepath' by adding the following line to the top of 
-your .vimrc file so that [Pathogen](https://github.com/tpope/vim-pathogen)
-can load the appropriate modules.
+I use [Vundle](https://github.com/VundleVim/Vundle.vim) for package management
+in Vim. I've use Pathogen in the past, but from my experience I prefer 
+Vundle.
 
 
-```bash
-set rtp+=~/.dotfiles/vim
-```
+
+# Tmux
+
 
 
 # IPython
@@ -112,5 +109,9 @@ The `ipython_config.py` file belongs in the ~/.iprofile/[profilename]
 directory, where `[profile]` is typically `profile_default`. To 
 find out more about Python config [files here](http://ipython.readthedocs.io/en/stable/config/intro.html#setting-config)
 
+
+# Comments
+
+Notable inspiration has come from Dan Van Boxel's "[Guide to Effective Computing](http://dvbuntu.github.io/compute/posts/2050/01/01/workflow.html)"
 
 
