@@ -19,7 +19,6 @@ call vundle#begin()
     Plugin 'tpope/vim-surround'
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-    Plugin 'hdima/python-syntax'
     Plugin 'lepture/vim-jinja'
     Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'plasticboy/vim-markdown'
@@ -30,8 +29,11 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'pangloss/vim-javascript'
     Plugin 'nvie/vim-flake8'
+    Plugin 'vim-python/python-syntax'
     "Plugin 'scrooloose/nerdtree'
     Plugin 'Rykka/riv.vim'
+    Plugin 'fenetikm/falcon'
+    Plugin 'flazz/vim-colorschemes'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -96,7 +98,9 @@ if has('gui_running')
     colorscheme darkZ
 else 
     set background=dark
-    colorscheme genio
+    "colorscheme valloric "falcon gruvbox slate
+    colorscheme xoria256 "obsidian mango madeofcode
+
     "colorscheme DarkDefault
 endif 
 

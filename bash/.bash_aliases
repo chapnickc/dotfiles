@@ -7,7 +7,7 @@ alias ....="cd ../../.."
 alias c='clear'
 alias q='exit'
 
-alias ls='ls -G'
+alias ls='ls --color=auto'
 alias l='ls'
 alias la="ls -A"
 alias ll="ls -1"
@@ -21,7 +21,7 @@ alias lt='tree -C -L 1'
 
 
 #   Vim 
-alias vim="mvim -v"
+#alias vim="mvim -v"
 alias vi="vim"
 alias bim="vim"
 alias v='vim'
