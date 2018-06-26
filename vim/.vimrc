@@ -99,7 +99,7 @@ if has('gui_running')
 else 
     set background=dark
     "colorscheme valloric "falcon gruvbox slate
-    colorscheme xoria256 "obsidian mango madeofcode
+    colorscheme wombat256mod "xoria256 obsidian mango madeofcode
 
     "colorscheme DarkDefault
 endif 
