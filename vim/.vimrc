@@ -58,7 +58,7 @@ set timeoutlen=900 ttimeoutlen=5				" switch modes faster (decrease esc/caps-loc
 set nohlsearch	                        " Don't continue to highlight searched phrases.
 set incsearch							" But do highlight as you type your search.
 set ignorecase					        " Make searches case-insensitive.
-set cole=2
+set cole=0
 set foldmethod=indent
 set nocursorline						" dont show a cursor line
 set ttyfast								" Send more characters for redraws
@@ -145,7 +145,7 @@ function! s:def_base_syntax()
     syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
     syntax match curlyBraces "\(\}\|{\|_\)"
     hi curlyBraces ctermfg=43
-    hi link commonOperator SpecialKey
+    hi commonOperator ctermfg=197
     hi link baseDelimiter SpecialChar
 endfunction
 
