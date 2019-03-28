@@ -32,6 +32,8 @@ call vundle#begin()
     Plugin 'nvie/vim-flake8'
     "Plugin 'scrooloose/nerdtree'
     Plugin 'Rykka/riv.vim'
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'mxw/vim-jsx'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -109,6 +111,8 @@ autocmd! GUIEnter * set vb t_vb=
 autocmd BufRead,BufNewFile *.py 
             \ set softtabstop=4 tabstop=4 shiftwidth=4 
 autocmd BufRead,BufNewFile *.cpp 
+            \ set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.js 
             \ set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.sh          
             \ let g:is_bash=1 | set filetype=sh

@@ -31,7 +31,7 @@ alias tm='tmux'
 
 #   Python  
 #alias python=python3
-alias ipy="ipython"
+alias ipy="python3 -m IPython"
 
 
 #   MATLAB     
@@ -51,3 +51,5 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias pup='pip install . --upgrade'
 alias activate='source env/bin/activate'
 alias idtoken="cat ~/.nexus/tokens | head -n 1 | cut -f 2 -d '='"
+alias dockersh='docker run --entrypoint /bin/bash -ti '
+alias dockersh2='docker run --entrypoint /bin/sh -ti'
