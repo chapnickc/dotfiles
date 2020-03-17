@@ -1,14 +1,8 @@
-set nocompatible              " be iMproved, required for vundle
-
-" Helpful Links
-" http://www.vex.net/~x/python_and_vim.html
-" set the runtime path to include Vundle and initialize
-set rtp+=~/dotfiles/vim/
-set noeb vb t_vb=
- 
-"   VUNDLE
-set rtp+=~/.vim/bundle/Vundle.vim
+set nocompatible              " be iMproved, required
 filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'alvan/vim-closetag'
     Plugin 'chrisbra/Colorizer'
@@ -28,12 +22,8 @@ call vundle#begin()
     Plugin 'matze/vim-tex-fold'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'nvie/vim-flake8'
     "Plugin 'scrooloose/nerdtree'
-    Plugin 'Rykka/riv.vim'
-    Plugin 'StanAngeloff/php.vim'
-    Plugin 'mxw/vim-jsx'
+	Plugin 'rafi/awesome-vim-colorschemes'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -69,7 +59,7 @@ set smartindent
 set softtabstop=4						" allow vim to see spaces as a tab
 set tabstop=4							" show existing tabs using 4 spaces
 set shiftwidth=4						" indent width for '>'
-set expandtab                           " on pressing tab insert 4 spaces
+"set expandtab                           " on pressing tab insert 4 spaces
 set noshowmode                      	" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set completeopt-=preview                " remove documentation preview
 set pumheight=20                        " Limit popup menu height
@@ -87,6 +77,11 @@ map			<F2> mzgg=G`z                             " Reindent the entire file
 
 map <leader>t :NERDTreeToggle<CR>
 
+map	<leader>b !make gsffpy<CR>   
+nmap	<leader>b   <Plug>SlimeLineSend
+nmap	<leader>b   <Plug>SlimeLineSend
+
+
 
 "   Colors
 syntax enable 
@@ -98,56 +93,14 @@ if has('gui_running')
     colorscheme darkZ
 else 
     set background=dark
-    colorscheme genio
-    "colorscheme DarkDefault
 endif 
 
-" disable bell
-autocmd! GUIEnter * set vb t_vb=     
+set background=dark " or light if you prefer the light version
+let g:two_firewatch_italics=1
+"colo happy_hacking
+"colo Iceberg
+colo focuspoint
 
-" specific language settings
- 
-" filenames 
-autocmd BufRead,BufNewFile *.py 
-            \ set softtabstop=4 tabstop=4 shiftwidth=4 
-autocmd BufRead,BufNewFile *.cpp 
-            \ set softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufRead,BufNewFile *.js 
-            \ set softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufRead,BufNewFile *.sh          
-            \ let g:is_bash=1 | set filetype=sh
-autocmd BufRead,BufNewFile *.h          
-            \ set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.html        
-            \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
-autocmd BufRead,BufNewFile *.m           
-            \ set filetype=matlab
-autocmd BufRead,BufNewFile *.json
-            \ set conceallevel=0
-autocmd BufRead,BufNewFile *.ino
-            \ set softtabstop=2 tabstop=2 shiftwidth=2
-
-
-
-
-
-augroup python
-    autocmd!
-    autocmd FileType python 
-                \ syn keyword pythonSelf self
-                \ | highlight def link pythonSelf Type
-augroup end
-
-autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
-function! s:def_base_syntax()
-    "\|\[\|\]\
-    syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-    syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
-    syntax match curlyBraces "\(\}\|{\|_\)"
-    hi curlyBraces ctermfg=43
-    hi link commonOperator SpecialKey
-    hi link baseDelimiter SpecialChar
-endfunction
 
 
 "		Vim-Slime
@@ -180,6 +133,7 @@ let g:instant_markdown_autostart = 0
 " indentLine
 let g:indentLine_color_dark = 1 
 let g:indentLine_color_term = 0
+let g:indentLine_setConceal = 0
 
 
 " Python Syntax
@@ -231,5 +185,50 @@ let g:vimtex_view_general_options = '@pdf'
 let g:tex_conceal= 'g'
 let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture', 'question']
+
+" disable bell
+autocmd! GUIEnter * set vb t_vb=     
+
+" specific language settings
+ 
+" filenames 
+autocmd BufRead,BufNewFile *.py 
+            \ set softtabstop=4 tabstop=4 shiftwidth=4 
+autocmd BufRead,BufNewFile *.cpp 
+            \ set softtabstop=4 tabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.js 
+            \ set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.sh          
+            \ let g:is_bash=1 | set filetype=sh
+autocmd BufRead,BufNewFile *.h          
+            \ set softtabstop=4 tabstop=4 shiftwidth=4 
+autocmd BufRead,BufNewFile *.html        
+            \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.m           
+            \ set filetype=matlab
+autocmd BufRead,BufNewFile *.json
+            \ set conceallevel=0
+autocmd BufRead,BufNewFile *.ino
+            \ set softtabstop=2 tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *Dockerfile
+            \ set  foldmethod=indent 
+
+augroup python
+    autocmd!
+    autocmd FileType python 
+                \ syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Type
+augroup end
+
+autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
+function! s:def_base_syntax()
+    "\|\[\|\]\
+    syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+    syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
+    syntax match curlyBraces "\(\}\|{\|_\)"
+    hi curlyBraces ctermfg=43
+    hi link commonOperator SpecialKey
+    hi link baseDelimiter SpecialChar
+endfunction
 
 

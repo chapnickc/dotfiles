@@ -31,7 +31,8 @@ alias tm='tmux'
 
 #   Python  
 #alias python=python3
-alias ipy="python3 -m IPython"
+#alias ipy="python3 -m IPython"
+alias ipy="ipython"
 
 
 #   MATLAB     
@@ -53,3 +54,7 @@ alias activate='source env/bin/activate'
 alias idtoken="cat ~/.nexus/tokens | head -n 1 | cut -f 2 -d '='"
 alias dockersh='docker run --entrypoint /bin/bash -ti '
 alias dockersh2='docker run --entrypoint /bin/sh -ti'
+alias dockerb='docker build . -t '
+alias gg='git log --graph --decorate  --format=medium'
+
+alias python='python3'
