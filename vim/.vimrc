@@ -59,7 +59,7 @@ set smartindent
 set softtabstop=4						" allow vim to see spaces as a tab
 set tabstop=4							" show existing tabs using 4 spaces
 set shiftwidth=4						" indent width for '>'
-"set expandtab                           " on pressing tab insert 4 spaces
+set expandtab                           " on pressing tab insert 4 spaces
 set noshowmode                      	" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set completeopt-=preview                " remove documentation preview
 set pumheight=20                        " Limit popup menu height
