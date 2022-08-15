@@ -4,26 +4,28 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-    Plugin 'alvan/vim-closetag'
-    Plugin 'chrisbra/Colorizer'
-    Plugin 'VundleVim/Vundle.vim'       " required
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'jpalardy/vim-slime'         " tmux integration
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'tpope/vim-surround'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-    Plugin 'hdima/python-syntax'
-    Plugin 'lepture/vim-jinja'
-    Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'suan/vim-instant-markdown'
-    Plugin 'lervag/vimtex'
-    Plugin 'matze/vim-tex-fold'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    "Plugin 'scrooloose/nerdtree'
-	Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'alvan/vim-closetag'
+
+Plugin 'VundleVim/Vundle.vim'       " required
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plugin 'tpope/vim-surround'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jpalardy/vim-slime'         " tmux integration
+Plugin 'chrisbra/Colorizer'
+Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'lepture/vim-jinja'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'hdima/python-syntax'
+Plugin 'lervag/vimtex'
+Plugin 'matze/vim-tex-fold'
+Plugin 'mxw/vim-jsx'
 call vundle#end()                         
 filetype plugin indent on						" required
 
@@ -63,6 +65,7 @@ set expandtab                           " on pressing tab insert 4 spaces
 set noshowmode                      	" Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set completeopt-=preview                " remove documentation preview
 set pumheight=20                        " Limit popup menu height
+set noic                                " Don't ignore case
 "set colorcolumn=80                 	" show line past 80 cols
 
 
@@ -86,13 +89,13 @@ nmap	<leader>b   <Plug>SlimeLineSend
 "   Colors
 syntax enable 
 if has("gui_macvim")
-    set guifont=Hack\ Regular:h13
+  set guifont=Hack\ Regular:h13
 endif
 
 if has('gui_running') 
-    colorscheme darkZ
+  colorscheme darkZ
 else 
-    set background=dark
+  set background=dark
 endif 
 
 set background=dark " or light if you prefer the light version
@@ -101,6 +104,44 @@ let g:two_firewatch_italics=1
 "colo Iceberg
 colo focuspoint
 
+
+"   YouCompleteMe
+ "non-recursively map '\+[' to go to documentation
+nnoremap 	<Leader>[	:YcmCompleter GetDoc<CR>    
+
+ "non-recursively map '\+]' to close preview windows 
+nnoremap 	<Leader>]	:pclose<CR>                 
+
+"nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:ycm_python_interpreter_path = '/usr/local/opt/python@3.8/bin/python3'
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/.global_ycm_extra_conf.py'
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_seed_identifiers_with_syntax = 1
+"#let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+let g:ycm_autoclose_preview_window_after_completion=1
+"nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+  "project_base_dir = os.environ['VIRTUAL_ENV']
+  "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  "execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 
 "		Vim-Slime
@@ -145,26 +186,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
 
-"   YouCompleteMe
-" non-recursively map '\+[' to go to documentation
-nnoremap 	<Leader>[	:YcmCompleter GetDoc<CR>    
-
-" non-recursively map '\+]' to close preview windows 
-nnoremap 	<Leader>]	:pclose<CR>                 
-
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"let g:ycm_python_binary_path = '/usr/local/bin/python3'
-let g:ycm_server_log_level='debug'
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_server_use_vim_stdout = 0
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_min_num_identifier_candidate_chars = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
 
 "   VimTeX
 nnoremap	<leader>c	:VimtexCompileSS<CR> 
@@ -190,45 +211,45 @@ let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', '
 autocmd! GUIEnter * set vb t_vb=     
 
 " specific language settings
- 
+
 " filenames 
 autocmd BufRead,BufNewFile *.py 
-            \ set softtabstop=4 tabstop=4 shiftwidth=4 
+      \ set softtabstop=4 tabstop=4 shiftwidth=4 
 autocmd BufRead,BufNewFile *.cpp 
-            \ set softtabstop=4 tabstop=4 shiftwidth=4
+      \ set softtabstop=4 tabstop=4 shiftwidth=4
 autocmd BufRead,BufNewFile *.js 
-            \ set softtabstop=2 tabstop=2 shiftwidth=2
+      \ set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.sh          
-            \ let g:is_bash=1 | set filetype=sh
+      \ let g:is_bash=1 | set filetype=sh
 autocmd BufRead,BufNewFile *.h          
-            \ set softtabstop=4 tabstop=4 shiftwidth=4 
+      \ set softtabstop=4 tabstop=4 shiftwidth=4 
 autocmd BufRead,BufNewFile *.html        
-            \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
+      \ set  foldmethod=indent softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.m           
-            \ set filetype=matlab
+      \ set filetype=matlab
 autocmd BufRead,BufNewFile *.json
-            \ set conceallevel=0
+      \ set conceallevel=0
 autocmd BufRead,BufNewFile *.ino
-            \ set softtabstop=2 tabstop=2 shiftwidth=2
+      \ set softtabstop=2 tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *Dockerfile
-            \ set  foldmethod=indent 
+      \ set  foldmethod=indent 
 
 augroup python
-    autocmd!
-    autocmd FileType python 
-                \ syn keyword pythonSelf self
-                \ | highlight def link pythonSelf Type
+  autocmd!
+  autocmd FileType python 
+        \ syn keyword pythonSelf self
+        \ | highlight def link pythonSelf Type
 augroup end
 
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
-    "\|\[\|\]\
-    syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
-    syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
+  "\|\[\|\]\
+  syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+  syntax match baseDelimiter "\(\.\|&\|}\|{\||\)"
     syntax match curlyBraces "\(\}\|{\|_\)"
-    hi curlyBraces ctermfg=43
-    hi link commonOperator SpecialKey
-    hi link baseDelimiter SpecialChar
-endfunction
+      hi curlyBraces ctermfg=43
+      hi link commonOperator SpecialKey
+      hi link baseDelimiter SpecialChar
+    endfunction
 
 
