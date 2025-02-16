@@ -221,8 +221,9 @@ hi EndOfBuffer guibg=NONE  guifg=#28aa7c
 "
 " FZF
 "
-nnoremap <leader>f :Files<CR>
+"nnoremap <leader>f :Files<CR>
 "nnoremap <leader>r :Rg <CR>
+nnoremap <leader>f :FzfLua files<CR>
 nnoremap <leader>r :FzfLua grep_visual<CR>
 nnoremap <leader>b :FzfLua buffers winopts.preview.hidden=true header=""<CR>
 
@@ -304,6 +305,5 @@ require("obsidian").setup({
     end,
 
 })
-
 
 EOF
