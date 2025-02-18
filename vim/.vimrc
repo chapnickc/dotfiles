@@ -12,8 +12,8 @@ call vundle#begin()
     Plugin 'tpope/vim-surround'
     Plugin 'Yggdroot/indentLine'
     Plugin 'jpalardy/vim-slime'         " tmux integration
-    Plugin 'chrisbra/Colorizer'
     Plugin 'rafi/awesome-vim-colorschemes'
+    Plugin 'norcalli/nvim-colorizer.lua'
     "Plugin 'vim-airline/vim-airline'
     "Plugin 'vim-airline/vim-airline-themes'
     "Plugin 'plasticboy/vim-markdown'
@@ -37,7 +37,7 @@ call vundle#begin()
     "Plugin 'mileszs/ack.vim'
     "Plugin 'Exafunction/codeium.vim'
     Plugin 'Exafunction/codeium.nvim'
-    Plugin 'dense-analysis/ale'
+    "Plugin 'dense-analysis/ale'
     Plugin 'tpope/vim-fugitive'
     Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     "Plugin 'nvim-treesitter/nvim-treesitter-context'
@@ -103,6 +103,7 @@ set noic                                " Don't ignore case
 "set relativenumber
 "set colorcolumn=80                 	" show line past 80 cols
 "set conceallevel=0
+set termguicolors
 
 "   Colors
 
@@ -120,6 +121,7 @@ nmap        <leader>l :bnext<CR>                   " Move to the next buffer
 nmap	    <leader>h :bprevious<CR>               " Move to the previous buffer
 map			<F1> :setlocal spell! spelllang=en_us<CR> " fix spelling
 map			<F2> mzgg=G`z                             " Reindent the entire file
+map			<leader>ot :ObsidianToday<CR>
 
 
 map <leader>e :Neotree toggle<CR>
@@ -170,9 +172,6 @@ let g:indentLine_color_term = 235
 let g:indentLine_setConceal = 0
 
 
-" Python Syntax
-"let python_highlight_all=1 " enable all Python syntax highlighting features
-
 
 "   VimTeX
 nnoremap	<leader>tc	:VimtexCompileSS<CR>
@@ -193,9 +192,7 @@ let g:tex_fold_enable=0
 let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', 'multicols', 'itemize', 'tikzpicture', 'question']
 
 " disable bell
-autocmd! GUIEnter * set vb t_vb=
-
-" specific language settings
+"autocmd! GUIEnter * set vb t_vb=
 
 " filenames
 autocmd BufRead,BufNewFile *.json
@@ -221,89 +218,10 @@ hi EndOfBuffer guibg=NONE  guifg=#28aa7c
 "
 " FZF
 "
-"nnoremap <leader>f :Files<CR>
-"nnoremap <leader>r :Rg <CR>
 nnoremap <leader>f :FzfLua files<CR>
-nnoremap <leader>r :FzfLua grep_visual<CR>
+nnoremap <leader>r :FzfLua grep_project<CR>
 nnoremap <leader>b :FzfLua buffers winopts.preview.hidden=true header=""<CR>
 
-"let $FZF_DEFAULT_OPTS='--bind "alt-j:down,alt-k:up"'
-"let $FZF_DEFAULT_COMMAND='rg --files' " this is so ~/.ignore works?
 let g:fzf_history_dir = '~/.config/local/share/fzf-vim-history'
 
-
-
-
-"call fzf#vim#buffers({'options': ['--multi']})
-"this at least allows multi selection
-"fzf#vim#buffers({'options': ['--multi']
-
-"
-"
-" ALE
-"
-let g:ale_linters = {
-\   'python': ['black', 'pyright'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black'],
-\}
-
-"let g:ale_linters_ignore = {'python': ['pyright']}
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-"let g:python3_host_prog="/opt/homebrew/bin/python3" " allow pynvim to work with virtualenvs
-
-
-
-
-
-
-:lua <<EOF
-
-local cmp = require('cmp')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-cmp.setup({
-   sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      --{ name = 'vsnip' }, -- For vsnip users.
-    }, {
-      { name = 'buffer' },
-    }),
-    mapping = cmp.mapping.preset.insert({
-      ['<C-n>'] = cmp.mapping.select_next_item(),
-      ['<C-p>'] = cmp.mapping.select_prev_item(),
-      --['<C-Space>'] = cmp.mapping.complete(),
-      --['<C-e>'] = cmp.mapping.abort(),
-      ['<Enter>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-
-});
-
-local util = require('lspconfig/util')
-local path = util.path
-require('lspconfig').pyright.setup{
-    capabilities = capabilities,
-    before_init = function(_, config)
-        default_venv_path = path.join(vim.fn.getcwd(), ".virtualenv", "bin", "python")
-        config.settings.python.pythonPath = default_venv_path
-    end
-}
-
-require("obsidian").setup({
-    workspaces = {
-    {
-        name = "personal",
-        path = "$HOME/etc/ccdefault",
-    },
-    },
-    follow_img_func = function(img)
-        local actual_path = vim.fn.expand("$HOME/etc/ccdefault" .. "/" .. img)
-        print(actual_path)
-        vim.fn.jobstart { "qlmanage", "-p", actual_path }  -- Mac OS quick look preview
-    end,
-
-})
-
-EOF
+":lua <<EOF EOF

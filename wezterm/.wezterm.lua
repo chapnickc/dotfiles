@@ -1,13 +1,20 @@
 local wezterm = require('wezterm')
 local act = wezterm.action
 local border_color = "rgba(255,28,0,0.2)";  --"#770000"
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 local config = {
     leader = { key = 'Enter', mods = 'CMD' },
+    harfbuzz_features = {"calt=0", "clig=0", "liga=0"},
     color_scheme = 'hardhacker',
     macos_window_background_blur = 12,
     window_background_opacity = 0.8,
     tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
+    --tab_bar_style = {
+    --    active_tab_right = wezterm.format{
+    --        {Text = SOLID_LEFT_ARROW},
+    --    },
+    --},
     font_size=16.0,
     window_decorations = "RESIZE",
     hide_tab_bar_if_only_one_tab=true,
