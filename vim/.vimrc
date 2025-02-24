@@ -53,6 +53,7 @@ call vundle#begin()
     Plugin 'hrsh7th/nvim-cmp'
 
     Plugin 'MeanderingProgrammer/render-markdown.nvim'
+    Plugin 'nvim-tree/nvim-web-devicons'
 
 
     Plugin 'epwalsh/obsidian.nvim'
@@ -218,9 +219,9 @@ hi EndOfBuffer guibg=NONE  guifg=#28aa7c
 "
 " FZF
 "
-nnoremap <leader>f :FzfLua files<CR>
-nnoremap <leader>r :FzfLua grep_project<CR>
-nnoremap <leader>b :FzfLua buffers winopts.preview.hidden=true header=""<CR>
+nnoremap <leader>r :lua require("fzf-lua").grep({ search = "", winopts={preview={hidden=true}}})<CR>
+nnoremap <leader>f :FzfLua files winopts.preview.hidden=true<CR>
+nnoremap <leader>b :FzfLua buffers winopts.preview.hidden=true<CR>
 
 let g:fzf_history_dir = '~/.config/local/share/fzf-vim-history'
 
