@@ -214,6 +214,7 @@ endfunction
 hi Normal guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#333333 guifg=#c9c9c9
 hi EndOfBuffer guibg=NONE  guifg=#28aa7c
+hi Comment guibg=NONE  guifg=#888888
 
 
 "
