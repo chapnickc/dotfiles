@@ -7,40 +7,29 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'alvan/vim-closetag'
     Plugin 'VundleVim/Vundle.vim'       " required
-    "Plugin 'Valloric/YouCompleteMe'
-    "Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
     Plugin 'tpope/vim-surround'
     Plugin 'Yggdroot/indentLine'
+
     Plugin 'jpalardy/vim-slime'         " tmux integration
     Plugin 'rafi/awesome-vim-colorschemes'
     Plugin 'norcalli/nvim-colorizer.lua'
-    "Plugin 'vim-airline/vim-airline'
-    "Plugin 'vim-airline/vim-airline-themes'
-    "Plugin 'plasticboy/vim-markdown'
-    "Plugin 'suan/vim-instant-markdown'
 
-    "Plugin 'octol/vim-cpp-enhanced-highlight'
-    "Plugin 'hdima/python-syntax'
-    "
-    "Plugin 'lepture/vim-jinja'
     Plugin 'lervag/vimtex'
     Plugin 'matze/vim-tex-fold'
-    "Plugin 'mxw/vim-jsx'
 
-    Plugin 'github/copilot.vim'
+    "Plugin 'github/copilot.vim'
+    "Plugin 'Exafunction/codeium.nvim'
+    Plugin 'Exafunction/windsurf.nvim'
+
     Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plugin 'junegunn/fzf.vim'
+    Plugin 'ibhagwan/fzf-lua' " also keeping regular fzf around for now
 
-    " purely for buffer management
-    Plugin 'ibhagwan/fzf-lua'
-
-    "Plugin 'mileszs/ack.vim'
-    "Plugin 'Exafunction/codeium.vim'
-    Plugin 'Exafunction/codeium.nvim'
-    "Plugin 'dense-analysis/ale'
     Plugin 'tpope/vim-fugitive'
     Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     "Plugin 'nvim-treesitter/nvim-treesitter-context'
+
     Plugin 'nvim-lua/plenary.nvim'
     Plugin 'nvim-neo-tree/neo-tree.nvim'
     Plugin 'MunifTanjim/nui.nvim'
@@ -55,9 +44,15 @@ call vundle#begin()
     Plugin 'MeanderingProgrammer/render-markdown.nvim'
     Plugin 'nvim-tree/nvim-web-devicons'
 
-
     Plugin 'epwalsh/obsidian.nvim'
 
+    Plugin 'sindrets/diffview.nvim'
+    Plugin 'NeogitOrg/neogit'
+
+    Plugin 'lewis6991/gitsigns.nvim'
+    Plugin 'APZelos/blamer.nvim'
+    Plugin 'iamcco/markdown-preview.nvim'
+    Plugin 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
 call vundle#end()
 
 filetype plugin indent on						" required
@@ -65,18 +60,18 @@ syntax enable
 
 if !has('nvim')
     set term=screen-256color        " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
+    set termencoding=utf-8
 endif
 
 set t_Co=256                    " Enable 256 colors
 set encoding=utf-8
-set termencoding=utf-8
 set fileencoding=utf-8
 set lazyredraw
 set backspace=indent,eol,start          " Allow backspace in insert mode
 set laststatus=2                        " Always show the status bar
 set autoread                            " Reload files changed outside vim
 set hidden                              " allows buffers to be hidden if they are modified
-set pastetoggle=<F3>                   " Paste without auto indent
+"set pastetoggle=<F3>                   " Paste without auto indent
 set nowrap
 set ruler                               " Cursor position
 set autowrite                           " Automatically save file
@@ -115,24 +110,27 @@ set guifont=Hack\ Regular:h13
 
 
 
+
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
-nmap ; :
+"nmap ; :
 nnoremap	<leader>r source ~/.vimrc<CR>
 nmap        <leader>l :bnext<CR>                   " Move to the next buffer
 nmap	    <leader>h :bprevious<CR>               " Move to the previous buffer
 map			<F1> :setlocal spell! spelllang=en_us<CR> " fix spelling
 map			<F2> mzgg=G`z                             " Reindent the entire file
 map			<leader>ot :ObsidianToday<CR>
-
+map			<leader>os :ObsidianSearch<CR>
 
 map <leader>e :Neotree toggle<CR>
+nmap <leader>cp :let @+ = expand("%")<CR>
 
 
 
 "   YouCompleteMe
 nnoremap <Leader>[	:lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader>]	:pclose<CR>
-"nnoremap <leader>g :lua vim.lsp.buf.<CR>
+nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>g :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>G :lua vim.lsp.buf.references()<CR>
 
 let g:ycm_complete_in_comments = 1
@@ -154,6 +152,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 let g:slime_python_ipython = 1
 let g:slime_dont_ask_default = 1
 let g:slime_preserve_curpos = 0
+let g:slime_bracketed_paste = 1
 
 
 
@@ -169,7 +168,8 @@ let g:airline_theme =  'raven'       "'kolor', 'understated'
 
 " indentLine
 let g:indentLine_color_dark = 1
-let g:indentLine_color_term = 235
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#555555' 
 let g:indentLine_setConceal = 0
 
 
@@ -199,6 +199,9 @@ let g:tex_fold_additional_envs = ['circuitikz', 'tabular', 'tabu', 'Karnaugh', '
 autocmd BufRead,BufNewFile *.json
       \ set conceallevel=0
 
+
+autocmd FileType typescript,javascript,typescriptreact,javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
     syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
@@ -215,6 +218,7 @@ hi Normal guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#333333 guifg=#c9c9c9
 hi EndOfBuffer guibg=NONE  guifg=#28aa7c
 hi Comment guibg=NONE  guifg=#888888
+hi NonText guibg=NONE  guifg=#777777
 
 
 "
@@ -222,8 +226,11 @@ hi Comment guibg=NONE  guifg=#888888
 "
 nnoremap <leader>r :lua require("fzf-lua").grep({ search = "", winopts={preview={hidden=true}}})<CR>
 nnoremap <leader>f :FzfLua files winopts.preview.hidden=true<CR>
-nnoremap <leader>b :FzfLua buffers winopts.preview.hidden=true<CR>
+nnoremap <leader>y :FzfLua oldfiles<CR>
+nnoremap <leader><esc> :FzfLua buffers winopts.preview.hidden=true<CR>
 
 let g:fzf_history_dir = '~/.config/local/share/fzf-vim-history'
+let g:blamer_enabled = 1
+let g:blamer_date_format = '%y/%m/%d %H:%M'
 
 ":lua <<EOF EOF
