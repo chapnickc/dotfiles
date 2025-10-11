@@ -47,7 +47,6 @@ call vundle#begin()
     Plugin 'epwalsh/obsidian.nvim'
 
     Plugin 'sindrets/diffview.nvim'
-    Plugin 'NeogitOrg/neogit'
 
     Plugin 'lewis6991/gitsigns.nvim'
     Plugin 'APZelos/blamer.nvim'
@@ -57,6 +56,9 @@ call vundle#end()
 
 filetype plugin indent on						" required
 syntax enable
+
+"let g:python_host_prog = "/Users/chad/env/bin/python"
+"let g:python3_host_prog = "/Users/chad/env/bin/python"
 
 if !has('nvim')
     set term=screen-256color        " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
@@ -129,7 +131,7 @@ nmap <leader>cp :let @+ = expand("%")<CR>
 "   YouCompleteMe
 nnoremap <Leader>[	:lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader>]	:pclose<CR>
-nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>
+"nnoremap <leader>a :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>g :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>G :lua vim.lsp.buf.references()<CR>
 
