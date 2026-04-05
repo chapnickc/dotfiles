@@ -10,6 +10,7 @@ local config = {
     window_background_opacity = 0.8,
     tab_bar_at_bottom = true,
     use_fancy_tab_bar = false,
+    warn_about_missing_glyphs = false,
     max_fps = 120,
     --tab_bar_style = {
     --    active_tab_right = wezterm.format{

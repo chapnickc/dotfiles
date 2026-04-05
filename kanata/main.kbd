@@ -1,0 +1,64 @@
+(defcfg
+  mouse-movement-key mvmt
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn lctl  lalt lmet          spc        rmet ralt 
+)
+
+(deflayer qwerty
+  @grl      1       2        3        4       5       6       7        8        9       0        -        =       bspc
+  tab       q       w        e        r       t       y       u        i        o       p        [        ]       @l0
+  caps      a       @hos     @hod     @hof    g       h       j        k        l       ;        '        ret
+  lsft      z       x        c        v       b       n       m        ,        .       /        rsft
+  lctl      fn      lalt     lmet            spc                       rmet     ralt  
+)
+
+(deflayer special
+  _     _    _    _    _    _    _    _    ◀◀    ▶⏸   ▶▶   🔅    🔆   mute
+  _     _    _    _    _    _    _    _    _    _    _    vold  volu   @bak
+  @bak  _    _    _    _    _    _    _    _    _    bldn    blup    _
+  _     _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _              _         _    _   
+)
+
+(defalias
+  ;; tap: backtick (grave), hold: toggle layer-switching layer while held
+  grl (tap-hold 200 200 grv (layer-toggle layers))
+  hos (tap-hold 200 200 s (layer-toggle arrows))
+  hod (tap-hold 200 220 d lalt)
+  hof (tap-hold 200 220 f lmeta)
+  hoj (tap-hold 200 220 j rmeta)
+  hok (tap-hold 200 220 k ralt)
+  qwr (layer-switch qwerty)
+  spl (layer-switch special)
+  bak (layer-switch qwerty)
+  ;;l0  (tap-hold 150 180 \ (layer-switch special))
+  l0 (multi 
+    (tap-hold 150 180 \ (layer-switch special))
+    (on-idle 3000 tap-vkey zz)
+  )
+)
+(defvirtualkeys
+  zz (layer-switch qwerty)
+)
+(deflayer layers
+  _    @qwr @spl _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _         _              _    _   
+)
+(deflayer arrows
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    ←    ↓    ↑    →    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _         _              _    _   
+)
+
+

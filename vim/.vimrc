@@ -3,56 +3,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-    Plugin 'alvan/vim-closetag'
-    Plugin 'VundleVim/Vundle.vim'       " required
-
-    Plugin 'tpope/vim-surround'
-    Plugin 'Yggdroot/indentLine'
-
-    Plugin 'jpalardy/vim-slime'         " tmux integration
-    Plugin 'rafi/awesome-vim-colorschemes'
-    Plugin 'norcalli/nvim-colorizer.lua'
-
-    Plugin 'lervag/vimtex'
-    Plugin 'matze/vim-tex-fold'
-
-    "Plugin 'github/copilot.vim'
-    "Plugin 'Exafunction/codeium.nvim'
-    Plugin 'Exafunction/windsurf.nvim'
-
-    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plugin 'junegunn/fzf.vim'
-    Plugin 'ibhagwan/fzf-lua' " also keeping regular fzf around for now
-
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    "Plugin 'nvim-treesitter/nvim-treesitter-context'
-
-    Plugin 'nvim-lua/plenary.nvim'
-    Plugin 'nvim-neo-tree/neo-tree.nvim'
-    Plugin 'MunifTanjim/nui.nvim'
-
-    Plugin 'neovim/nvim-lspconfig'
-    Plugin 'hrsh7th/cmp-nvim-lsp'
-    Plugin 'hrsh7th/cmp-buffer'
-    Plugin 'hrsh7th/cmp-path'
-    Plugin 'hrsh7th/cmp-cmdline'
-    Plugin 'hrsh7th/nvim-cmp'
-
-    Plugin 'MeanderingProgrammer/render-markdown.nvim'
-    Plugin 'nvim-tree/nvim-web-devicons'
-
-    Plugin 'epwalsh/obsidian.nvim'
-
-    Plugin 'sindrets/diffview.nvim'
-
-    Plugin 'lewis6991/gitsigns.nvim'
-    Plugin 'APZelos/blamer.nvim'
-    Plugin 'iamcco/markdown-preview.nvim'
-    Plugin 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
-call vundle#end()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"    Plugin 'VundleVim/Vundle.vim'       " required
+"    "Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"call vundle#end()
 
 filetype plugin indent on						" required
 syntax enable
@@ -64,53 +19,6 @@ if !has('nvim')
     set term=screen-256color        " define terminal. should be the same as in .tmux.conf.  previously 'xterm-256color'
     set termencoding=utf-8
 endif
-
-set t_Co=256                    " Enable 256 colors
-set encoding=utf-8
-set fileencoding=utf-8
-set lazyredraw
-set backspace=indent,eol,start          " Allow backspace in insert mode
-set laststatus=2                        " Always show the status bar
-set autoread                            " Reload files changed outside vim
-set hidden                              " allows buffers to be hidden if they are modified
-"set pastetoggle=<F3>                   " Paste without auto indent
-set nowrap
-set ruler                               " Cursor position
-set autowrite                           " Automatically save file
-set showmatch                           " Show matching brackets
-set timeoutlen=900 ttimeoutlen=5				" switch modes faster (decrease esc/caps-lock lag)
-set nohlsearch	                        " Don't continue to highlight searched phrases.
-set incsearch							" But do highlight as you type your search.
-set ignorecase					        " Make searches case-insensitive.
-set cole=2
-set foldmethod=indent
-set nocursorline						" dont show a cursor line
-set ttyfast								" Send more characters for redraws
-set mouse=a								" Enable Mouse in all modes
-set modeline							" enable filetype variable
-set autoindent
-set smartindent
-set softtabstop=4						" allow vim to see spaces as a tab
-set tabstop=4							" show existing tabs using 4 spaces
-set shiftwidth=4						" indent width for '>'
-set expandtab                           " on pressing tab insert 4 spaces
-"set noshowmode                      	" Hide the default mode text (e.g. -- INSERT -- below the statusline)
-"set completeopt-=preview                " remove documentation preview
-set pumheight=20                        " Limit popup menu height
-set noic                                " Don't ignore case
-"set relativenumber
-"set colorcolumn=80                 	" show line past 80 cols
-"set conceallevel=0
-set termguicolors
-
-"   Colors
-
-set background=dark
-colorscheme focuspoint "Iceberg happy_hacking
-set guifont=Hack\ Regular:h13
-
-
-
 
 
 let mapleader="\<Space>"                  " change the mapleader from '\' to space
@@ -155,6 +63,12 @@ let g:slime_python_ipython = 1
 let g:slime_dont_ask_default = 1
 let g:slime_preserve_curpos = 0
 let g:slime_bracketed_paste = 1
+
+xmap    <leader>s   <Plug>SlimeRegionSend
+nmap	<leader>s   <Plug>SlimeLineSend
+nmap    <leader>ps      <Plug>SlimeParagraphSend
+
+
 
 
 
